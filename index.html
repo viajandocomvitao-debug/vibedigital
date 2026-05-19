@@ -125,7 +125,7 @@ p{text-wrap:pretty}
 @keyframes port-scroll-anim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .port-scroll-mask{overflow:hidden;width:100%;mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%)}
 .port-scroll-track{display:flex;width:max-content;animation:port-scroll-anim 32s linear infinite}
-.port-scroll-track:hover{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.port-scroll-track:hover{animation-play-state:paused}}
 .port-item{flex-shrink:0;width:320px;height:210px;border-radius:16px;overflow:hidden;position:relative;display:block;text-decoration:none;margin-right:20px;box-shadow:0 8px 28px rgba(0,0,0,0.12);transition:transform 0.35s ease,box-shadow 0.35s ease}
 .port-item:hover{transform:scale(1.04);box-shadow:0 16px 48px rgba(0,0,0,0.22)}
 .port-item img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
@@ -229,10 +229,14 @@ p{text-wrap:pretty}
      o espaço abaixo de forma imperceptível sob o overlay escuro.
   ──────────────────────────────────────────────────────────────── */
   #hero {
-    background-size: 110% auto !important;
+    align-items: flex-end !important;
+    padding-bottom: 52px !important;
+    background-size: 130% auto !important;
     background-position: center top !important;
     background-color: #04080f !important;
   }
+  /* Hero button: full width on mobile */
+  #hero .btn-p { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
 }
 
 /* Tablet (640–1023px) */
@@ -248,7 +252,7 @@ p{text-wrap:pretty}
    SERVICE CARDS — card-21 style
    ═══════════════════════════════ */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.svc-card{position:relative;height:440px;border-radius:20px;overflow:hidden;transition:transform 0.5s ease,box-shadow 0.5s ease;display:block;text-decoration:none}
+.svc-card{position:relative;height:440px;border-radius:20px;overflow:hidden;transition:transform 0.5s ease,box-shadow 0.5s ease;display:block;text-decoration:none;cursor:pointer}
 .svc-card:hover{transform:scale(1.04)}
 .svc-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.5s ease}
 .svc-card:hover .svc-card-bg{transform:scale(1.1)}
@@ -346,14 +350,20 @@ p{text-wrap:pretty}
   <!-- Sparkles canvas -->
   <canvas id="hero-sparks" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
   <div style="max-width:900px;margin:0 auto;padding:0 24px;width:100%;position:relative;z-index:2;text-align:center">
-      <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:40px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">única</span> <span class="hw" data-delay="200">agência</span> <span class="hw" data-delay="300">feita</span> <span class="hw" data-delay="400">para</span> <span class="hw" data-delay="520">brasileiros</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreendem</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
-<div class="fu" data-d="3" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+      <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:28px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">única</span> <span class="hw" data-delay="200">agência</span> <span class="hw" data-delay="300">feita</span> <span class="hw" data-delay="400">para</span> <span class="hw" data-delay="520">brasileiros</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreendem</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
+      <div class="fu" data-d="2" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px">
         <div style="display:flex">
           <img src="imagens/John.png" alt="John" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:3;position:relative;margin-right:-10px" loading="lazy"/>
           <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Fernanda" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:2;position:relative;margin-right:-10px" loading="lazy"/>
           <img src="imagens/Leonardo.png" alt="Leonardo" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:1;position:relative" loading="lazy"/>
         </div>
         <span style="color:rgba(255,255,255,0.75);font-size:clamp(13px,2.5vw,14px)"><strong style="color:#fff">+20 negócios brasileiros</strong> que hoje faturam mais na Irlanda</span>
+      </div>
+      <div class="fu" data-d="3" style="display:flex;justify-content:center">
+        <a href="https://wa.me/353000000000" class="btn-p" style="padding:15px 32px;font-size:16px;gap:10px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.121 1.532 5.854L0 24l6.335-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.596-.487-5.112-1.341l-.367-.214-3.762.893.953-3.681-.233-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Fale com a Vibe agora
+        </a>
       </div>
   </div>
 </section>
@@ -477,7 +487,7 @@ p{text-wrap:pretty}
     <div class="svc-grid fu" data-d="1">
 
       <!-- Card 01 — Google & Meta Ads -->
-      <a class="svc-card" href="#contato"
+      <div class="svc-card"
          style="box-shadow:0 8px 40px rgba(0,154,68,0.22);"
          onmouseover="this.style.boxShadow='0 0 64px -10px rgba(0,154,68,0.65)'"
          onmouseout="this.style.boxShadow='0 8px 40px rgba(0,154,68,0.22)'">
@@ -488,10 +498,10 @@ p{text-wrap:pretty}
           <h3 class="svc-card-title">Google &amp;&nbsp;Meta Ads</h3>
           <p class="svc-card-desc">Seu negócio aparecendo quando o cliente tá pronto pra comprar. Resultado em dias, sem queimar dinheiro com o público errado.</p>
         </div>
-      </a>
+      </div>
 
       <!-- Card 02 — Landing Pages -->
-      <a class="svc-card" href="#contato"
+      <div class="svc-card"
          style="box-shadow:0 8px 40px rgba(244,121,32,0.22);"
          onmouseover="this.style.boxShadow='0 0 64px -10px rgba(244,121,32,0.65)'"
          onmouseout="this.style.boxShadow='0 8px 40px rgba(244,121,32,0.22)'">
@@ -502,10 +512,10 @@ p{text-wrap:pretty}
           <h3 class="svc-card-title">Landing&nbsp;Pages</h3>
           <p class="svc-card-desc">Página feita pra vender, não pra enfeitar. Rápida, direta e otimizada pra transformar clique em&nbsp;cliente.</p>
         </div>
-      </a>
+      </div>
 
       <!-- Card 03 — Automação WhatsApp -->
-      <a class="svc-card" href="#contato"
+      <div class="svc-card"
          style="box-shadow:0 8px 40px rgba(0,160,120,0.20);"
          onmouseover="this.style.boxShadow='0 0 64px -10px rgba(0,180,130,0.55)'"
          onmouseout="this.style.boxShadow='0 8px 40px rgba(0,160,120,0.20)'">
@@ -516,10 +526,10 @@ p{text-wrap:pretty}
           <h3 class="svc-card-title">Automação de&nbsp;WhatsApp</h3>
           <p class="svc-card-desc">Seu WhatsApp respondendo e qualificando lead enquanto você dorme. Nenhuma oportunidade&nbsp;perdida.</p>
         </div>
-      </a>
+      </div>
 
       <!-- Card 04 — Branding -->
-      <a class="svc-card" href="#contato"
+      <div class="svc-card"
          style="box-shadow:0 8px 40px rgba(110,50,200,0.20);"
          onmouseover="this.style.boxShadow='0 0 64px -10px rgba(120,60,220,0.55)'"
          onmouseout="this.style.boxShadow='0 8px 40px rgba(110,50,200,0.20)'">
@@ -530,7 +540,7 @@ p{text-wrap:pretty}
           <h3 class="svc-card-title">Branding</h3>
           <p class="svc-card-desc">Sua marca com cara de profissional e alma brasileira. Logo, cores e linguagem que o cliente respeita e o brasileiro&nbsp;reconhece.</p>
         </div>
-      </a>
+      </div>
 
     </div>
     <div class="fu" style="margin-top:40px;text-align:center">
@@ -555,45 +565,45 @@ p{text-wrap:pretty}
       <div class="port-scroll-track">
 
         <!-- Set 1 — originais -->
-        <a class="port-item" href="https://phibsborough-motors.preview.emergentagent.com/" target="_blank" rel="noopener noreferrer">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://phibsborough-motors.preview.emergentagent.com/')">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="Bissoli Motors" loading="lazy" style="object-position:left top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://bigback-gx9kj62.public.builtwithrocket.new/home" target="_blank" rel="noopener noreferrer">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://bigback-gx9kj62.public.builtwithrocket.new/home')">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="BigBack Fitness" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://cascaobarber.lovable.app/" target="_blank" rel="noopener noreferrer">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://cascaobarber.lovable.app/')">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcascaobarber.lovable.app%2F?w=1280&h=800" alt="Cascão Barber" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Site + Identidade Visual</span><div class="port-item-title-s">Cascão Barber</div><div class="port-item-sub-s">Barbearia · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://desbrava-landing-premium.lovable.app/" target="_blank" rel="noopener noreferrer">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://desbrava-landing-premium.lovable.app/')">
           <img src="imagens/desbrava.png" alt="App Desbrava" loading="lazy" style="object-position:center top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Página de Captura + App</span><div class="port-item-title-s">Página de Captura — App Desbrava</div><div class="port-item-sub-s">Aplicativo de Viagens</div></div>
         </a>
-        <a class="port-item" href="https://marsalla-estetic.lovable.app/" target="_blank" rel="noopener noreferrer">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://marsalla-estetic.lovable.app/')">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmarsalla-estetic.lovable.app%2F?w=1280&h=800" alt="Marsalla Estética" loading="lazy" style="object-position:center top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Site + Agendamento Online</span><div class="port-item-title-s">Marsalla Estética</div><div class="port-item-sub-s">Clínica Estética · Irlanda</div></div>
         </a>
 
         <!-- Set 2 — duplicado para loop contínuo -->
-        <a class="port-item" href="https://phibsborough-motors.preview.emergentagent.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://phibsborough-motors.preview.emergentagent.com/')" aria-hidden="true" tabindex="-1">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:left top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://bigback-gx9kj62.public.builtwithrocket.new/home" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://bigback-gx9kj62.public.builtwithrocket.new/home')" aria-hidden="true" tabindex="-1">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://cascaobarber.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://cascaobarber.lovable.app/')" aria-hidden="true" tabindex="-1">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcascaobarber.lovable.app%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Site + Identidade Visual</span><div class="port-item-title-s">Cascão Barber</div><div class="port-item-sub-s">Barbearia · Dublin</div></div>
         </a>
-        <a class="port-item" href="https://desbrava-landing-premium.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://desbrava-landing-premium.lovable.app/')" aria-hidden="true" tabindex="-1">
           <img src="imagens/desbrava.png" alt="" loading="lazy" style="object-position:center top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Página de Captura + App</span><div class="port-item-title-s">Página de Captura — App Desbrava</div><div class="port-item-sub-s">Aplicativo de Viagens</div></div>
         </a>
-        <a class="port-item" href="https://marsalla-estetic.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://marsalla-estetic.lovable.app/')" aria-hidden="true" tabindex="-1">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmarsalla-estetic.lovable.app%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:center top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Site + Agendamento Online</span><div class="port-item-title-s">Marsalla Estética</div><div class="port-item-sub-s">Clínica Estética · Irlanda</div></div>
         </a>
@@ -1289,9 +1299,99 @@ document.addEventListener('keydown',function(e){
     document.querySelectorAll('.lgl-overlay.lgl-open').forEach(function(el){
       fecharModal(el.id);
     });
+    closePortModal();
   }
 });
+
+// ── Portfolio iframe modal ──────────────────────────────────
+function openPortModal(url){
+  var modal=document.getElementById('port-modal');
+  var iframe=document.getElementById('port-modal-iframe');
+  var loader=document.getElementById('port-modal-loader');
+  iframe.src='';
+  loader.style.display='flex';
+  iframe.style.opacity='0';
+  modal.classList.add('port-modal-open');
+  document.body.style.overflow='hidden';
+  iframe.onload=function(){
+    loader.style.display='none';
+    iframe.style.opacity='1';
+  };
+  iframe.src=url;
+}
+function closePortModal(){
+  var modal=document.getElementById('port-modal');
+  if(!modal) return;
+  modal.classList.remove('port-modal-open');
+  document.body.style.overflow='';
+  setTimeout(function(){
+    document.getElementById('port-modal-iframe').src='';
+  },350);
+}
 </script>
+
+<!-- ── Portfolio iframe modal overlay ───────────────────────── -->
+<div id="port-modal" onclick="if(event.target===this)closePortModal()" style="
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.82);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
+
+  <div style="
+    position:relative;width:min(96vw,1280px);height:min(90vh,820px);
+    background:#0a0a0a;border-radius:16px;overflow:hidden;
+    box-shadow:0 32px 80px rgba(0,0,0,0.7);
+    transform:scale(0.94);transition:transform 0.3s ease">
+
+    <!-- barra superior -->
+    <div style="
+      position:absolute;top:0;left:0;right:0;height:48px;
+      background:#1a1a1a;display:flex;align-items:center;
+      justify-content:space-between;padding:0 16px;z-index:10;
+      border-bottom:1px solid rgba(255,255,255,0.08)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:#febc2e"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:#28c840"></div>
+      </div>
+      <span style="color:rgba(255,255,255,0.4);font-size:12px;font-family:monospace">preview</span>
+      <button onclick="closePortModal()" style="
+        background:none;border:none;cursor:pointer;
+        color:rgba(255,255,255,0.55);font-size:22px;line-height:1;
+        padding:4px 6px;border-radius:6px;transition:color 0.2s,background 0.2s"
+        onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.1)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.background='none'"
+        aria-label="Fechar">&#x2715;</button>
+    </div>
+
+    <!-- loader -->
+    <div id="port-modal-loader" style="
+      position:absolute;inset:48px 0 0 0;display:flex;
+      flex-direction:column;align-items:center;justify-content:center;
+      background:#0a0a0a;gap:16px;z-index:5">
+      <div style="
+        width:36px;height:36px;border:3px solid rgba(0,154,68,0.25);
+        border-top-color:#009A44;border-radius:50%;
+        animation:port-spin 0.8s linear infinite"></div>
+      <span style="color:rgba(255,255,255,0.4);font-size:13px">Carregando...</span>
+    </div>
+
+    <!-- iframe -->
+    <iframe id="port-modal-iframe" src="" style="
+      position:absolute;inset:48px 0 0 0;
+      width:100%;height:calc(100% - 48px);
+      border:none;transition:opacity 0.3s ease"
+      allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<style>
+#port-modal.port-modal-open{opacity:1;pointer-events:all}
+#port-modal.port-modal-open>div{transform:scale(1)}
+@keyframes port-spin{to{transform:rotate(360deg)}}
+</style>
 
 </body>
 </html>
