@@ -220,6 +220,19 @@ p{text-wrap:pretty}
 
   /* Causa image: bigger impact on mobile */
   .causa-img { width: 92% !important; }
+
+  /* ── Hero background — mobile fix ──────────────────────────────
+     Com cover + viewport portrait, o browser escala pela altura
+     e corta as laterais (onde ficam os 2 países).
+     Solução: escalar pela largura (100% auto) para mostrar toda a
+     extensão horizontal da imagem. A cor de fundo (#04080f) preenche
+     o espaço abaixo de forma imperceptível sob o overlay escuro.
+  ──────────────────────────────────────────────────────────────── */
+  #hero {
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-color: #04080f !important;
+  }
 }
 
 /* Tablet (640–1023px) */
