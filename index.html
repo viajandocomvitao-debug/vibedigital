@@ -229,7 +229,7 @@ p{text-wrap:pretty}
      o espaço abaixo de forma imperceptível sob o overlay escuro.
   ──────────────────────────────────────────────────────────────── */
   #hero {
-    background-size: 100% auto !important;
+    background-size: 110% auto !important;
     background-position: center top !important;
     background-color: #04080f !important;
   }
@@ -340,18 +340,14 @@ p{text-wrap:pretty}
 </nav>
 
 <!-- HERO -->
-<section id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:clamp(72px,10vh,110px) 0 clamp(52px,7vh,90px);background:url('imagens/hero-bg.png') center center / cover no-repeat">
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:clamp(72px,10vh,110px) 0 clamp(52px,7vh,90px);background:url('imagens/hero-bg.png') center center / 120% auto no-repeat #04080f">
   <!-- Dark overlay for text legibility -->
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.45) 100%);z-index:0"></div>
   <!-- Sparkles canvas -->
   <canvas id="hero-sparks" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
   <div style="max-width:900px;margin:0 auto;padding:0 24px;width:100%;position:relative;z-index:2;text-align:center">
       <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:40px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">única</span> <span class="hw" data-delay="200">agência</span> <span class="hw" data-delay="300">feita</span> <span class="hw" data-delay="400">para</span> <span class="hw" data-delay="520">brasileiros</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreendem</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
-<div class="fu hero-cta-wrap" data-d="2" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:40px">
-        <a href="https://wa.me/353000000000" class="btn-p" style="padding:16px 32px;font-size:16px">Quero meu negócio crescendo na Irlanda</a>
-        <a href="#servicos" class="btn-s" style="padding:16px 32px;font-size:16px;color:#fff;border-color:rgba(255,255,255,0.6)" onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#fff'">Ver nossos serviços</a>
-      </div>
-      <div class="fu" data-d="3" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+<div class="fu" data-d="3" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
         <div style="display:flex">
           <img src="imagens/John.png" alt="John" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:3;position:relative;margin-right:-10px" loading="lazy"/>
           <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Fernanda" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:2;position:relative;margin-right:-10px" loading="lazy"/>
