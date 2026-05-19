@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vibe Digital — Marketing Digital para Brasileiros na Irlanda</title>
+<meta name="description" content="Marketing digital feito por brasileiros que vivem na Irlanda."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{'bg':'#FFFFFF','surface':'#F7F7F7','bd':'#E5E5E5','primary':'#009A44','vi':'#F47920','muted':'#555555','subtle':'#888888'},fontFamily:{sans:['Inter','sans-serif']}}}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#FFFFFF;color:#0A0A0A;font-family:'Inter',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#F7F7F7}
+::-webkit-scrollbar-thumb{background:#CCCCCC;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#009A44}
+
+/* Gradient text */
+.gt{background:linear-gradient(135deg,#009A44 0%,#F47920 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Primary button — solid green */
+.btn-p{position:relative;overflow:hidden;background:#009A44;color:#fff;font-weight:700;border-radius:10px;transition:background 200ms,transform 200ms,box-shadow 200ms;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;border:none;box-shadow:0 4px 16px rgba(0,154,68,0.25)}
+.btn-p:hover{background:#007a35;transform:translateY(-1px);box-shadow:0 8px 32px rgba(0,154,68,.35)}
+.btn-p::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg)}
+.btn-p:hover::before{animation:shine 600ms ease forwards}
+@keyframes shine{from{left:-100%}to{left:200%}}
+
+/* Secondary button — outline dark */
+.btn-s{display:inline-flex;align-items:center;gap:8px;color:#0A0A0A;font-weight:600;border-radius:10px;border:1.5px solid #0A0A0A;transition:all 200ms;text-decoration:none;background:transparent}
+.btn-s:hover{background:#0A0A0A;color:#fff;transform:translateY(-1px)}
+
+/* Nav links */
+.nl{position:relative;color:#555555;font-size:14px;font-weight:500;transition:color 200ms;text-decoration:none}
+.nl::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:#009A44;transform:scaleX(0);transform-origin:left;transition:transform 250ms ease}
+.nl:hover{color:#0A0A0A}.nl:hover::after{transform:scaleX(1)}
+
+/* Fade-up animation */
+.fu{opacity:0;transform:translateY(28px);transition:opacity 600ms ease,transform 600ms ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+[data-d="1"].fu{transition-delay:80ms}[data-d="2"].fu{transition-delay:160ms}[data-d="3"].fu{transition-delay:240ms}[data-d="4"].fu{transition-delay:320ms}[data-d="5"].fu{transition-delay:400ms}
+
+/* Marquee */
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.mq-t{animation:mq 24s linear infinite;display:flex;white-space:nowrap}
+
+/* ═══════════════════════════════
+   INTERACTIVE SERVICE SELECTOR
+   ═══════════════════════════════ */
+.isv-wrap{display:flex;width:100%;height:414px;overflow:hidden;border-radius:22px;gap:4px}
+.isv-opt{position:relative;flex:1;min-width:54px;overflow:hidden;cursor:pointer;background-size:cover;background-position:center;transition:flex 720ms cubic-bezier(.4,0,.2,1),box-shadow 400ms,transform 0.4s ease-in-out;opacity:0;will-change:transform}
+.isv-opt.isv-entered{animation:isvSlideIn 600ms ease forwards}
+.isv-opt.isv-act{flex:7;box-shadow:0 20px 60px rgba(0,0,0,0.45)}
+@keyframes isvSlideIn{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:translateX(0)}}
+/* dark overlay — lighter when active */
+.isv-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.42);transition:background 600ms;pointer-events:none}
+.isv-opt.isv-act .isv-overlay{background:rgba(0,0,0,0.18)}
+/* bottom gradient shadow */
+.isv-shadow{position:absolute;bottom:0;left:0;right:0;height:210px;background:linear-gradient(to top,rgba(0,0,0,0.90) 0%,transparent 100%);pointer-events:none;transition:opacity 600ms}
+/* label row */
+.isv-label{position:absolute;bottom:22px;left:0;right:0;padding:0 18px;display:flex;align-items:flex-end;gap:12px;z-index:3}
+/* text info */
+.isv-info{overflow:hidden;min-width:0}
+.isv-title{font-size:17px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transform:translateX(24px);transition:opacity 520ms,transform 520ms;line-height:1.3}
+.isv-desc{font-size:12.5px;color:rgba(255,255,255,0.80);line-height:1.55;opacity:0;transform:translateX(24px);transition:opacity 520ms 70ms,transform 520ms 70ms;margin-top:4px;max-width:360px}
+.isv-opt.isv-act .isv-title{opacity:1;transform:translateX(0)}
+.isv-opt.isv-act .isv-desc{opacity:1;transform:translateX(0)}
+/* Mobile — vertical stack */
+@media(max-width:639px){
+  .isv-wrap{flex-direction:column;height:auto;gap:3px;border-radius:16px}
+  .isv-opt{min-width:unset;height:58px;min-height:58px;flex:none}
+  .isv-opt.isv-act{height:207px}
+  .isv-label{bottom:16px;padding:0 14px;align-items:center}
+  .isv-title{font-size:15px;white-space:normal;word-break:break-word}
+  .isv-desc{font-size:12px;max-width:260px}}
+/* Tablet — keep horizontal but less height */
+@media(min-width:640px) and (max-width:1023px){
+  .isv-wrap{height:342px}
+  .isv-opt{min-width:44px}}
+
+/* Portfolio cards */
+.pc{transition:transform 300ms,box-shadow 300ms,border-color 300ms;cursor:pointer}
+.pc:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,154,68,.1);border-color:#009A44!important}
+.pov{opacity:0;transition:opacity 300ms}.pc:hover .pov{opacity:1}
+
+/* ═══════════════════════════════
+   LEGAL MODALS
+   ═══════════════════════════════ */
+.lgl-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.52);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 250ms ease}
+.lgl-overlay.lgl-open{opacity:1;pointer-events:auto}
+.lgl-box{background:#fff;border-radius:20px;max-width:700px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,0.16);transform:translateY(20px);transition:transform 320ms ease}
+.lgl-overlay.lgl-open .lgl-box{transform:translateY(0)}
+.lgl-head{padding:22px 28px;border-bottom:1px solid #E5E5E5;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.lgl-tag{font-size:10px;font-weight:800;letter-spacing:.12em;color:#009A44;text-transform:uppercase;margin-bottom:4px}
+.lgl-title{font-size:17px;font-weight:800;color:#0A0A0A}
+.lgl-close{width:34px;height:34px;border-radius:50%;border:1.5px solid #E5E5E5;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 200ms;flex-shrink:0}
+.lgl-close:hover{background:#F7F7F7;border-color:#bbb}
+.lgl-body{overflow-y:auto;padding:28px 28px 32px;flex:1;scrollbar-width:thin;scrollbar-color:#ddd #f7f7f7}
+.lgl-body::-webkit-scrollbar{width:4px}
+.lgl-body::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px}
+.lgl-body h3{font-size:13px;font-weight:800;color:#0A0A0A;text-transform:uppercase;letter-spacing:.06em;margin:24px 0 8px;padding-bottom:6px;border-bottom:1px solid #F0F0F0}
+.lgl-body h3:first-child{margin-top:0}
+.lgl-body p{color:#555555;font-size:14px;line-height:1.78;margin-bottom:10px}
+.lgl-body ul{color:#555555;font-size:14px;line-height:1.78;padding-left:18px;margin-bottom:10px}
+.lgl-body li{margin-bottom:5px}
+.lgl-body a{color:#009A44;text-decoration:none}
+.lgl-body a:hover{text-decoration:underline}
+.lgl-footer{padding:16px 28px;border-top:1px solid #E5E5E5;display:flex;justify-content:flex-end;flex-shrink:0}
+
+/* Typography — prevent widows and orphans */
+h1,h2,h3,h4{text-wrap:balance}
+p{text-wrap:pretty}
+
+/* Animated SVG underline */
+@keyframes drawUnder{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+.au-path{stroke-dasharray:320;stroke-dashoffset:320;fill:none;stroke-linecap:round}
+.au-path.drawn{animation:drawUnder 1.5s ease-in-out forwards}
+
+/* Portfolio Auto Scroll */
+@keyframes port-scroll-anim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.port-scroll-mask{overflow:hidden;width:100%;mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%)}
+.port-scroll-track{display:flex;width:max-content;animation:port-scroll-anim 32s linear infinite}
+.port-scroll-track:hover{animation-play-state:paused}
+.port-item{flex-shrink:0;width:320px;height:210px;border-radius:16px;overflow:hidden;position:relative;display:block;text-decoration:none;margin-right:20px;box-shadow:0 8px 28px rgba(0,0,0,0.12);transition:transform 0.35s ease,box-shadow 0.35s ease}
+.port-item:hover{transform:scale(1.04);box-shadow:0 16px 48px rgba(0,0,0,0.22)}
+.port-item img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.port-item-info{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.84) 0%,rgba(0,0,0,.1) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:16px;opacity:0;transition:opacity 0.3s ease}
+.port-item:hover .port-item-info{opacity:1}
+.port-item-badge-s{display:inline-block;background:rgba(0,154,68,.9);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;width:fit-content}
+.port-item-title-s{font-size:15px;font-weight:800;color:#fff;line-height:1.25}
+.port-item-sub-s{font-size:11px;color:rgba(255,255,255,.72);margin-top:2px}
+@media(max-width:639px){.port-item{width:220px;height:148px}.port-item-title-s{font-size:13px}}
+
+/* Testimonial shuffle */
+.tc-card{position:absolute;left:0;top:0;width:340px;background:#fff;border:1px solid #E5E5E5;border-radius:20px;padding:28px 28px 24px;box-shadow:0 8px 32px rgba(0,0,0,0.08);user-select:none;-webkit-user-select:none;will-change:transform}
+.tc-card.featured{border:2px solid #009A44;box-shadow:0 12px 40px rgba(0,154,68,0.15)}
+.tc-dot-w{display:flex;gap:8px;justify-content:center;margin-top:28px}
+.tc-dot{width:8px;height:8px;border-radius:50%;background:#CCCCCC;display:inline-block;transition:all 250ms;cursor:pointer;border:none;padding:0}
+.tc-dot.active{background:#009A44;width:24px;border-radius:4px}
+
+
+/* Hero word-appear animation */
+@keyframes wordAppear{0%{opacity:0;transform:translateY(28px) scale(0.82);filter:blur(8px)}50%{opacity:.8;transform:translateY(8px) scale(.97);filter:blur(2px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.hw{display:inline-block;opacity:0;margin:0 0.03em;transition:transform 300ms ease,text-shadow 300ms ease}
+.hw:hover{transform:translateY(-3px);text-shadow:0 0 24px rgba(255,255,255,0.4)}
+
+
+/* Social icons */
+.soc{transition:all 200ms}.soc:hover{background:rgba(0,154,68,.1)!important;border-color:rgba(0,154,68,.35)!important;transform:translateY(-2px)}
+
+/* Hero float */
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-float{animation:heroFloat 5s ease-in-out infinite}
+
+/* ═══════════════════════════════
+   MOBILE RESPONSIVE (< 640px)
+   ═══════════════════════════════ */
+@media (max-width: 639px) {
+
+  /* Nav + Footer logo height */
+  .logo-vibe { height: 56px !important; }
+
+  /* Services: shrink decorative number so text has room */
+  .sn { font-size: 24px !important; width: 36px !important; }
+
+  /* Portfolio carousel: tighter start padding so next card peeks */
+  #pslider { padding-left: 16px !important; padding-right: 16px !important; padding-top: 4px !important; padding-bottom: 4px !important; }
+
+  /* Numbers section: reduce card padding (2-col grid on mobile) */
+  .metric-card { padding: 22px 12px !important; }
+
+  /* Testimonial shuffle: scale cards to screen width */
+  .tc-card { width: calc(100vw - 48px) !important; }
+  #tc-stack { width: calc(100vw - 48px) !important; }
+
+  /* CTA inner box: reduce heavy padding */
+  .cta-box-inner { padding: 40px 20px !important; }
+
+  /* Hero CTA buttons: full width stack on mobile */
+  .hero-cta-wrap { flex-direction: column !important; align-items: stretch !important; }
+  .hero-cta-wrap a { justify-content: center !important; text-align: center !important; width: 100% !important; box-sizing: border-box !important; }
+
+  /* Clients row: tighter gap on mobile */
+  .clients-row { gap: 16px !important; }
+  .logo-client > div { min-width: 120px !important; padding: 14px 16px !important; }
+
+  /* Footer: single column on mobile */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .footer-logo-col { grid-column: span 1 !important; }
+
+  /* Legal modals: tighter padding on mobile */
+  .lgl-body { padding: 20px 16px 24px !important; }
+  .lgl-head { padding: 16px 16px !important; }
+  .lgl-footer { padding: 12px 16px !important; }
+  .lgl-box { border-radius: 14px !important; }
+
+  /* CTA main button: responsive padding */
+  .cta-main-btn { padding: 16px 24px !important; font-size: 15px !important; }
+
+  /* Services CTA button: full width on mobile */
+  .isv-cta-btn { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+
+  /* Section vertical padding: reduce on mobile */
+  #servicos, #portfolio, #numeros, #causa, #depoimentos, #faq, #contato { padding-top: 44px !important; padding-bottom: 44px !important; }
+  #sobre { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  /* Hide forced line breaks on mobile so text reflows naturally */
+  .hide-mobile { display: none !important; }
+
+  /* Portfolio text: reduce subtitle size */
+  .pcard-title { font-size: 15px !important; }
+
+  /* FAQ question text: slightly smaller on mobile */
+  .ft span { font-size: 14px !important; }
+
+  /* Causa image: bigger impact on mobile */
+  .causa-img { width: 92% !important; }
+}
+
+/* Tablet (640–1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .pslide { width: clamp(300px, 52vw, 400px) !important; }
+  .logo-vibe { height: 72px !important; }
+  .tc-card { width: clamp(300px, 70vw, 340px) !important; }
+  #tc-stack { width: clamp(300px, 70vw, 340px) !important; }
+  .clients-row { gap: 24px !important; }
+}
+
+/* ═══════════════════════════════
+   SERVICE CARDS — card-21 style
+   ═══════════════════════════════ */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc-card{position:relative;height:440px;border-radius:20px;overflow:hidden;transition:transform 0.5s ease,box-shadow 0.5s ease;display:block;text-decoration:none}
+.svc-card:hover{transform:scale(1.04)}
+.svc-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.5s ease}
+.svc-card:hover .svc-card-bg{transform:scale(1.1)}
+.svc-card-overlay{position:absolute;inset:0;pointer-events:none}
+.svc-card-body{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;height:100%;padding:24px}
+.svc-card-num{font-size:10px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.55);margin-bottom:9px}
+.svc-card-title{font-size:21px;font-weight:800;line-height:1.25;color:#fff;margin:0}
+.svc-card-desc{font-size:12.5px;line-height:1.65;color:rgba(255,255,255,.82);max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height 0.4s ease,opacity 0.35s ease,margin-top 0.35s ease}
+.svc-card:hover .svc-card-desc{max-height:80px;opacity:1;margin-top:9px}
+@media(max-width:1023px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-card{height:370px}
+  .svc-card-title{font-size:18px}
+}
+@media(max-width:639px){
+  .svc-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .svc-card{height:210px;border-radius:14px}
+  .svc-card-body{padding:14px}
+  .svc-card-num{font-size:9px;margin-bottom:5px}
+  .svc-card-title{font-size:13px;line-height:1.2}
+  .svc-card-cta{margin-top:10px;padding:9px 12px;font-size:11px;border-radius:8px}
+  .svc-card:hover .svc-card-desc{max-height:0;opacity:0;margin-top:0}
+}
+
+/* ═══════════════════════════════
+   QUEM SOMOS — bento grid
+   ═══════════════════════════════ */
+.qs-pillar{position:relative;overflow:hidden;border:1px solid #E8E8E8;border-radius:18px;padding:26px 22px;background:#fff;opacity:0;transform:translateY(20px);transition:opacity 500ms ease,transform 500ms ease,box-shadow 280ms,border-color 280ms}
+.qs-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#009A44;border-radius:3px 3px 0 0;transform:scaleX(0);transform-origin:left;transition:transform 320ms ease}
+.qs-pillar.qs-vis{opacity:1;transform:translateY(0)}
+.qs-pillar:hover{box-shadow:0 14px 36px rgba(0,154,68,0.10);border-color:rgba(0,154,68,0.25);transform:translateY(-4px)}
+.qs-pillar:hover::before{transform:scaleX(1)}
+.qs-pillar-orange::before{background:#F47920}
+.qs-card{background:linear-gradient(145deg,#003d1c 0%,#009A44 100%);border-radius:24px;padding:36px 30px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;transform:translateY(20px);transition:opacity 600ms ease,transform 600ms ease;position:relative;overflow:hidden}
+.qs-card.qs-vis{opacity:1;transform:translateY(0)}
+.qs-cta-card{background:#0A0A0A;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;opacity:0;transform:translateY(20px);transition:opacity 500ms ease,transform 500ms ease}
+.qs-cta-card.qs-vis{opacity:1;transform:translateY(0)}
+.qs-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-template-areas:'hero p01 p02' 'hero p03 p04'}
+/* Metric cards responsive */
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:767px){.metric-grid{grid-template-columns:repeat(2,1fr)}}
+.qs-area-hero{grid-area:hero}
+.qs-area-p01{grid-area:p01}
+.qs-area-p02{grid-area:p02}
+.qs-area-p03{grid-area:p03}
+.qs-area-p04{grid-area:p04}
+@media(max-width:1023px){
+  .qs-bento{grid-template-columns:1fr 1fr;grid-template-areas:'hero hero' 'p01 p02' 'p03 p04'}
+}
+@media(max-width:639px){
+  .qs-bento{grid-template-columns:1fr;grid-template-areas:'hero' 'p01' 'p02' 'p03' 'p04'}
+  .qs-card{padding:30px 24px;min-height:240px}
+  .qs-area-hero{min-height:240px}
+}
+
+</style>
+</head>
+<body class="bg-bg text-gray-900 font-sans">
+
+<canvas id="hc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1"></canvas>
+
+
+<!-- NAV -->
+<nav style="position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,255,255,0.95);border-bottom:1px solid #E5E5E5">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between">
+    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0">
+      <img src="imagens/logo-new.png" alt="Vibe Digital" class="logo-vibe" style="height:112px;object-fit:contain" />
+    </a>
+    <div class="hidden md:flex" style="gap:32px;align-items:center">
+      <a href="#servicos" class="nl">Serviços</a>
+      <a href="#sobre" class="nl">Sobre</a>
+      <a href="#portfolio" class="nl">Portfólio</a>
+      <a href="#depoimentos" class="nl">Depoimentos</a>
+      <a href="#contato" style="background:#0A0A0A;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 200ms" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#0A0A0A'">Fale Conosco</a>
+    </div>
+    <button id="mb" class="md:hidden" style="background:none;border:none;color:#0A0A0A;cursor:pointer;padding:8px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mm" class="hidden" style="background:#fff;border-top:1px solid #E5E5E5;padding:24px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <a href="#servicos" style="color:#0A0A0A;font-size:18px;font-weight:500;text-decoration:none">Serviços</a>
+      <a href="#sobre" style="color:#0A0A0A;font-size:18px;font-weight:500;text-decoration:none">Sobre</a>
+      <a href="#portfolio" style="color:#0A0A0A;font-size:18px;font-weight:500;text-decoration:none">Portfólio</a>
+      <a href="#depoimentos" style="color:#0A0A0A;font-size:18px;font-weight:500;text-decoration:none">Depoimentos</a>
+      <a href="#contato" class="btn-p" style="padding:14px 24px;font-size:16px;justify-content:center;margin-top:8px">Fale Conosco</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:clamp(72px,10vh,110px) 0 clamp(52px,7vh,90px);background:url('imagens/hero-bg.png') center center / cover no-repeat">
+  <!-- Dark overlay for text legibility -->
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.45) 100%);z-index:0"></div>
+  <!-- Sparkles canvas -->
+  <canvas id="hero-sparks" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;width:100%;position:relative;z-index:2;text-align:center">
+      <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:40px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">única</span> <span class="hw" data-delay="200">agência</span> <span class="hw" data-delay="300">feita</span> <span class="hw" data-delay="400">para</span> <span class="hw" data-delay="520">brasileiros</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreendem</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
+<div class="fu hero-cta-wrap" data-d="2" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:40px">
+        <a href="https://wa.me/353000000000" class="btn-p" style="padding:16px 32px;font-size:16px">Quero meu negócio crescendo na Irlanda</a>
+        <a href="#servicos" class="btn-s" style="padding:16px 32px;font-size:16px;color:#fff;border-color:rgba(255,255,255,0.6)" onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#fff'">Ver nossos serviços</a>
+      </div>
+      <div class="fu" data-d="3" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex">
+          <img src="imagens/John.png" alt="John" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:3;position:relative;margin-right:-10px" loading="lazy"/>
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Fernanda" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:2;position:relative;margin-right:-10px" loading="lazy"/>
+          <img src="imagens/Leonardo.png" alt="Leonardo" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;z-index:1;position:relative" loading="lazy"/>
+        </div>
+        <span style="color:rgba(255,255,255,0.75);font-size:clamp(13px,2.5vw,14px)"><strong style="color:#fff">+20 negócios brasileiros</strong> que hoje faturam mais na Irlanda</span>
+      </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div id="marquee" style="background:#fff;border-top:1px solid #E5E5E5;border-bottom:1px solid #E5E5E5;overflow:hidden;padding:14px 0;position:relative;z-index:1">
+  <div class="mq-t">
+    <span style="display:inline-flex;align-items:center;gap:28px;padding-right:28px;color:#555555;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">
+      <span>Google Ads</span><span style="color:#009A44">✦</span><span>Meta Ads</span><span style="color:#009A44">✦</span><span>Landing Pages</span><span style="color:#009A44">✦</span><span>Automação WhatsApp</span><span style="color:#009A44">✦</span><span>Branding</span><span style="color:#009A44">✦</span><span>Google Ads</span><span style="color:#009A44">✦</span><span>Meta Ads</span><span style="color:#009A44">✦</span><span>Landing Pages</span><span style="color:#009A44">✦</span><span>Automação WhatsApp</span><span style="color:#009A44">✦</span><span>Branding</span><span style="color:#009A44">✦</span><span>Google Ads</span><span style="color:#009A44">✦</span><span>Meta Ads</span><span style="color:#009A44">✦</span><span>Landing Pages</span><span style="color:#009A44">✦</span><span>Automação WhatsApp</span><span style="color:#009A44">✦</span><span>Branding</span><span style="color:#009A44">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- CLIENTES / SOCIAL PROOF -->
+<section style="background:#fff;padding:32px 0;border-bottom:1px solid #E5E5E5;position:relative;z-index:1">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px">
+    <p style="text-align:center;color:#888888;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Quem já está crescendo com a Vibe Digital</p>
+    <div class="clients-row" style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap">
+
+      <div class="logo-client" style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.55;transition:opacity 250ms,transform 250ms;cursor:default" onmouseover="this.style.opacity='1';this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.55';this.style.transform='scale(1)'">
+        <div style="background:#F7F7F7;border:1px solid #E5E5E5;border-radius:14px;padding:18px 28px;min-width:150px;text-align:center">
+          <div style="font-size:18px;font-weight:900;color:#0A0A0A;letter-spacing:-0.02em">Big John</div>
+          <div style="font-size:11px;font-weight:600;color:#888888;letter-spacing:.06em;text-transform:uppercase">Personal Trainer</div>
+        </div>
+      </div>
+
+      <div class="logo-client" style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.55;transition:opacity 250ms,transform 250ms;cursor:default" onmouseover="this.style.opacity='1';this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.55';this.style.transform='scale(1)'">
+        <div style="background:#F7F7F7;border:1px solid #E5E5E5;border-radius:14px;padding:18px 28px;min-width:150px;text-align:center">
+          <div style="font-size:18px;font-weight:900;color:#0A0A0A;letter-spacing:-0.02em">Cascão</div>
+          <div style="font-size:11px;font-weight:600;color:#888888;letter-spacing:.06em;text-transform:uppercase">Barber</div>
+        </div>
+      </div>
+
+
+      <div class="logo-client" style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.55;transition:opacity 250ms,transform 250ms;cursor:default" onmouseover="this.style.opacity='1';this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.55';this.style.transform='scale(1)'">
+        <div style="background:#F7F7F7;border:1px solid #E5E5E5;border-radius:14px;padding:18px 28px;min-width:150px;text-align:center">
+          <div style="font-size:18px;font-weight:900;color:#0A0A0A;letter-spacing:-0.02em">CleanPro</div>
+        </div>
+      </div>
+
+      <div class="logo-client" style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.55;transition:opacity 250ms,transform 250ms;cursor:default" onmouseover="this.style.opacity='1';this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.55';this.style.transform='scale(1)'">
+        <div style="background:#F7F7F7;border:1px solid #E5E5E5;border-radius:14px;padding:18px 28px;min-width:150px;text-align:center">
+          <div style="font-size:18px;font-weight:900;color:#009A44;letter-spacing:-0.02em">+16</div>
+          <div style="font-size:11px;font-weight:600;color:#888888;letter-spacing:.06em;text-transform:uppercase">Outros clientes</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUEM SOMOS FOTO -->
+<section id="problemas" style="background:#F7F7F7;padding:40px 24px;position:relative;z-index:1;display:flex;justify-content:center;align-items:center">
+  <img src="imagens/quemsomos.png" alt="Quem somos — Vibe Digital" style="width:100%;max-width:620px;display:block;border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,0.10)" loading="lazy"/>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="sobre" style="background:#F7F7F7;padding:60px 0;position:relative;z-index:1;overflow:hidden">
+  <div style="position:absolute;top:-80px;right:-60px;width:420px;height:420px;background:radial-gradient(circle,rgba(0,154,68,0.05),transparent 70%);pointer-events:none"></div>
+  <div style="position:absolute;bottom:-60px;left:-40px;width:300px;height:300px;background:radial-gradient(circle,rgba(244,121,32,0.04),transparent 70%);pointer-events:none"></div>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:32px">
+      <h2 class="fu" style="font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;color:#0A0A0A;margin-bottom:16px">Quem somos</h2>
+
+    </div>
+
+    <!-- Bento grid -->
+    <div class="qs-bento">
+
+      <!-- Hero card — vídeo -->
+      <div class="qs-card qs-area-hero" style="background:#000;padding:0;border-radius:24px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px">
+          <source src="imagens/videovibe.mp4" type="video/mp4"/>
+        </video>
+      </div>
+
+      <!-- Pillar 01 -->
+      <div class="qs-pillar qs-area-p01" style="transition-delay:50ms">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#009A44;margin-bottom:12px">01</div>
+        <h4 style="font-size:14px;font-weight:700;color:#0A0A0A;margin-bottom:8px;line-height:1.35">Brasileiros atendendo brasileiros, em português, na&nbsp;Irlanda</h4>
+        <p style="font-size:12px;color:#666;line-height:1.65">A gente fala sua língua porque é sua língua. Reuniões, relatórios e estratégia 100% em português, sem jargão gringo, sem você sair de uma call com metade das dúvidas.</p>
+      </div>
+
+      <!-- Pillar 02 -->
+      <div class="qs-pillar qs-area-p02" style="transition-delay:120ms">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#009A44;margin-bottom:12px">02</div>
+        <h4 style="font-size:14px;font-weight:700;color:#0A0A0A;margin-bottom:8px;line-height:1.35">Não é sobre postar, é sobre trazer&nbsp;cliente.</h4>
+        <p style="font-size:12px;color:#666;line-height:1.65">Post bonito não paga conta. Cada ação tem um objetivo claro: gerar demanda, atrair cliente e fazer o seu negócio crescer de forma consistente.</p>
+      </div>
+
+      <!-- Pillar 03 -->
+      <div class="qs-pillar qs-pillar-orange qs-area-p03" style="transition-delay:190ms">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#F47920;margin-bottom:12px">03</div>
+        <h4 style="font-size:14px;font-weight:700;color:#0A0A0A;margin-bottom:8px;line-height:1.35">Estratégia sob medida. Pacote pronto a gente não&nbsp;vende.</h4>
+        <p style="font-size:12px;color:#666;line-height:1.65">Cada negócio é um negócio. Barbearia em Dublin não é a mesma coisa que clínica de estética em Cork. Não existe Plano Ouro aqui. Existe a estratégia certa pro seu momento, feita com você, ajustada sempre que precisar.</p>
+      </div>
+
+      <!-- Pillar 04 -->
+      <div class="qs-pillar qs-pillar-orange qs-area-p04" style="transition-delay:260ms">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#F47920;margin-bottom:12px">04</div>
+        <h4 style="font-size:14px;font-weight:700;color:#0A0A0A;margin-bottom:8px;line-height:1.35">Você enxerga cada euro&nbsp;investido</h4>
+        <p style="font-size:12px;color:#666;line-height:1.65">Relatórios em português e reunião de performance como combinado. Você vê onde cada euro tá indo, o que tá funcionando e o que a gente vai ajustar na próxima semana.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" style="background:#F7F7F7;padding:64px 0;position:relative;z-index:1">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:40px">
+      <p class="fu" style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">SERVIÇOS</p>
+      <h2 class="fu" data-d="1" style="font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.2;margin-bottom:12px;color:#0A0A0A">O que seu negócio precisa<br class="hide-mobile"> para finalmente crescer na&nbsp;Irlanda.</h2>
+
+    </div>
+    <!-- Service Cards — card-21 style -->
+    <div class="svc-grid fu" data-d="1">
+
+      <!-- Card 01 — Google & Meta Ads -->
+      <a class="svc-card" href="#contato"
+         style="box-shadow:0 8px 40px rgba(0,154,68,0.22);"
+         onmouseover="this.style.boxShadow='0 0 64px -10px rgba(0,154,68,0.65)'"
+         onmouseout="this.style.boxShadow='0 8px 40px rgba(0,154,68,0.22)'">
+        <div class="svc-card-bg" style="background-image:url('imagens/googlemeta.png')"></div>
+        <div class="svc-card-overlay" style="background:linear-gradient(to top,rgba(0,46,18,0.95) 0%,rgba(0,80,30,0.55) 42%,transparent 70%)"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">01</div>
+          <h3 class="svc-card-title">Google &amp;&nbsp;Meta Ads</h3>
+          <p class="svc-card-desc">Seu negócio aparecendo quando o cliente tá pronto pra comprar. Resultado em dias, sem queimar dinheiro com o público errado.</p>
+        </div>
+      </a>
+
+      <!-- Card 02 — Landing Pages -->
+      <a class="svc-card" href="#contato"
+         style="box-shadow:0 8px 40px rgba(244,121,32,0.22);"
+         onmouseover="this.style.boxShadow='0 0 64px -10px rgba(244,121,32,0.65)'"
+         onmouseout="this.style.boxShadow='0 8px 40px rgba(244,121,32,0.22)'">
+        <div class="svc-card-bg" style="background-image:url('imagens/landing.png')"></div>
+        <div class="svc-card-overlay" style="background:linear-gradient(to top,rgba(80,28,0,0.95) 0%,rgba(120,50,0,0.55) 42%,transparent 70%)"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">02</div>
+          <h3 class="svc-card-title">Landing&nbsp;Pages</h3>
+          <p class="svc-card-desc">Página feita pra vender, não pra enfeitar. Rápida, direta e otimizada pra transformar clique em&nbsp;cliente.</p>
+        </div>
+      </a>
+
+      <!-- Card 03 — Automação WhatsApp -->
+      <a class="svc-card" href="#contato"
+         style="box-shadow:0 8px 40px rgba(0,160,120,0.20);"
+         onmouseover="this.style.boxShadow='0 0 64px -10px rgba(0,180,130,0.55)'"
+         onmouseout="this.style.boxShadow='0 8px 40px rgba(0,160,120,0.20)'">
+        <div class="svc-card-bg" style="background-image:url('imagens/atomacao.png')"></div>
+        <div class="svc-card-overlay" style="background:linear-gradient(to top,rgba(0,40,30,0.95) 0%,rgba(0,70,50,0.55) 42%,transparent 70%)"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">03</div>
+          <h3 class="svc-card-title">Automação de&nbsp;WhatsApp</h3>
+          <p class="svc-card-desc">Seu WhatsApp respondendo e qualificando lead enquanto você dorme. Nenhuma oportunidade&nbsp;perdida.</p>
+        </div>
+      </a>
+
+      <!-- Card 04 — Branding -->
+      <a class="svc-card" href="#contato"
+         style="box-shadow:0 8px 40px rgba(110,50,200,0.20);"
+         onmouseover="this.style.boxShadow='0 0 64px -10px rgba(120,60,220,0.55)'"
+         onmouseout="this.style.boxShadow='0 8px 40px rgba(110,50,200,0.20)'">
+        <div class="svc-card-bg" style="background-image:url('imagens/branding2.png')"></div>
+        <div class="svc-card-overlay" style="background:linear-gradient(to top,rgba(18,8,46,0.95) 0%,rgba(40,18,90,0.55) 42%,transparent 70%)"></div>
+        <div class="svc-card-body">
+          <div class="svc-card-num">04</div>
+          <h3 class="svc-card-title">Branding</h3>
+          <p class="svc-card-desc">Sua marca com cara de profissional e alma brasileira. Logo, cores e linguagem que o cliente respeita e o brasileiro&nbsp;reconhece.</p>
+        </div>
+      </a>
+
+    </div>
+    <div class="fu" style="margin-top:40px;text-align:center">
+      <a href="#contato" class="btn-p isv-cta-btn" style="padding:14px 32px;font-size:16px">Quero saber qual serviço é pra mim</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background:#fff;padding:64px 0 48px;position:relative;z-index:1;overflow:hidden">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px">
+    <div class="fu" style="text-align:center;margin-bottom:32px">
+      <p style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">PORTFÓLIO</p>
+      <h2 style="font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.2;margin-bottom:12px;color:#0A0A0A">Amostras reais do nosso processo criativo&nbsp;aplicado</h2>
+      <p style="color:#555555;font-size:clamp(14px,2.5vw,17px)">Cada projeto começou com uma conversa. Igual à que você pode ter&nbsp;hoje.</p>
+    </div>
+  </div>
+
+  <!-- Auto Scroll Portfolio -->
+  <div style="margin-top:8px">
+    <div class="port-scroll-mask">
+      <div class="port-scroll-track">
+
+        <!-- Set 1 — originais -->
+        <a class="port-item" href="https://phibsborough-motors.preview.emergentagent.com/" target="_blank" rel="noopener noreferrer">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="Bissoli Motors" loading="lazy" style="object-position:left top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://bigback-gx9kj62.public.builtwithrocket.new/home" target="_blank" rel="noopener noreferrer">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="BigBack Fitness" loading="lazy" style="object-position:15% top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://cascaobarber.lovable.app/" target="_blank" rel="noopener noreferrer">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcascaobarber.lovable.app%2F?w=1280&h=800" alt="Cascão Barber" loading="lazy" style="object-position:15% top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Site + Identidade Visual</span><div class="port-item-title-s">Cascão Barber</div><div class="port-item-sub-s">Barbearia · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://desbrava-landing-premium.lovable.app/" target="_blank" rel="noopener noreferrer">
+          <img src="imagens/desbrava.png" alt="App Desbrava" loading="lazy" style="object-position:center top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Página de Captura + App</span><div class="port-item-title-s">Página de Captura — App Desbrava</div><div class="port-item-sub-s">Aplicativo de Viagens</div></div>
+        </a>
+        <a class="port-item" href="https://marsalla-estetic.lovable.app/" target="_blank" rel="noopener noreferrer">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmarsalla-estetic.lovable.app%2F?w=1280&h=800" alt="Marsalla Estética" loading="lazy" style="object-position:center top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Site + Agendamento Online</span><div class="port-item-title-s">Marsalla Estética</div><div class="port-item-sub-s">Clínica Estética · Irlanda</div></div>
+        </a>
+
+        <!-- Set 2 — duplicado para loop contínuo -->
+        <a class="port-item" href="https://phibsborough-motors.preview.emergentagent.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:left top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://bigback-gx9kj62.public.builtwithrocket.new/home" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="" loading="lazy" style="object-position:15% top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://cascaobarber.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcascaobarber.lovable.app%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:15% top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Site + Identidade Visual</span><div class="port-item-title-s">Cascão Barber</div><div class="port-item-sub-s">Barbearia · Dublin</div></div>
+        </a>
+        <a class="port-item" href="https://desbrava-landing-premium.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+          <img src="imagens/desbrava.png" alt="" loading="lazy" style="object-position:center top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Página de Captura + App</span><div class="port-item-title-s">Página de Captura — App Desbrava</div><div class="port-item-sub-s">Aplicativo de Viagens</div></div>
+        </a>
+        <a class="port-item" href="https://marsalla-estetic.lovable.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmarsalla-estetic.lovable.app%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:center top"/>
+          <div class="port-item-info"><span class="port-item-badge-s">Site + Agendamento Online</span><div class="port-item-title-s">Marsalla Estética</div><div class="port-item-sub-s">Clínica Estética · Irlanda</div></div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="processo" style="background:#F7F7F7;padding:40px 24px;position:relative;z-index:1;display:flex;justify-content:center;align-items:center">
+  <img src="imagens/primeirocontato.png" alt="Do primeiro contato ao resultado — Vibe Digital" style="width:100%;max-width:620px;display:block;border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,0.10)" loading="lazy"/>
+</section>
+
+<!-- NÚMEROS — clean light -->
+<section id="numeros" style="background:#fff;padding:64px 0;position:relative;z-index:1;overflow:hidden">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
+    <div style="text-align:center;margin-bottom:40px">
+      <p class="fu" style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">RESULTADOS REAIS</p>
+      <h2 class="fu" data-d="1" style="font-size:clamp(28px,4vw,44px);font-weight:800;color:#0A0A0A;line-height:1.2">Resultado não é promessa.<br class="hide-mobile"> É número.</h2>
+    </div>
+    <div class="metric-grid">
+
+      <!-- Card 1 -->
+      <div class="fu metric-card" style="background:#F7F7F7;border:1px solid #E8E8E8;border-radius:20px;padding:32px 24px;text-align:center;transition:transform 300ms,box-shadow 300ms,border-color 300ms;cursor:default" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,154,68,0.10)';this.style.borderColor='rgba(0,154,68,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='#E8E8E8'">
+        <div style="font-size:clamp(36px,6vw,56px);font-weight:900;color:#009A44;line-height:1;margin-bottom:8px;letter-spacing:-0.02em" data-target="20" data-prefix="+" data-suffix="">0</div>
+        <div style="color:#0A0A0A;font-size:14px;font-weight:700;margin-bottom:4px">Negócios transformados</div>
+        <div style="color:#888888;font-size:12px;line-height:1.5">Brasileiros que cresceram na Irlanda</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="fu metric-card" data-d="1" style="background:#F7F7F7;border:1px solid #E8E8E8;border-radius:20px;padding:32px 24px;text-align:center;transition:transform 300ms,box-shadow 300ms,border-color 300ms;cursor:default" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(244,121,32,0.10)';this.style.borderColor='rgba(244,121,32,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='#E8E8E8'">
+        <div style="font-size:clamp(36px,6vw,56px);font-weight:900;color:#F47920;line-height:1;margin-bottom:8px;letter-spacing:-0.02em" data-target="25" data-prefix="€" data-suffix="K+">€0</div>
+        <div style="color:#0A0A0A;font-size:14px;font-weight:700;margin-bottom:4px">Em tráfego gerenciado</div>
+        <div style="color:#888888;font-size:12px;line-height:1.5">Investido com estratégia</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="fu metric-card" data-d="2" style="background:#F7F7F7;border:1px solid #E8E8E8;border-radius:20px;padding:32px 24px;text-align:center;transition:transform 300ms,box-shadow 300ms,border-color 300ms;cursor:default" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,154,68,0.10)';this.style.borderColor='rgba(0,154,68,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='#E8E8E8'">
+        <div style="font-size:clamp(36px,6vw,56px);font-weight:900;color:#009A44;line-height:1;margin-bottom:8px;letter-spacing:-0.02em" data-target="200" data-prefix="+" data-suffix="%">0</div>
+        <div style="color:#0A0A0A;font-size:14px;font-weight:700;margin-bottom:4px">ROI médio</div>
+        <div style="color:#888888;font-size:12px;line-height:1.5">Em 6 meses de parceria</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="fu metric-card" data-d="3" style="background:#F7F7F7;border:1px solid #E8E8E8;border-radius:20px;padding:32px 24px;text-align:center;transition:transform 300ms,box-shadow 300ms,border-color 300ms;cursor:default" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(255,196,19,0.12)';this.style.borderColor='rgba(255,196,19,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='#E8E8E8'">
+        <div style="font-size:clamp(36px,6vw,56px);font-weight:900;color:#0A0A0A;line-height:1;margin-bottom:8px;letter-spacing:-0.02em" data-target="4.9" data-prefix="" data-suffix="★">0</div>
+        <div style="color:#0A0A0A;font-size:14px;font-weight:700;margin-bottom:4px">Avaliação dos clientes</div>
+        <div style="color:#888888;font-size:12px;line-height:1.5">Nota média real</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" style="background:#F7F7F7;padding:64px 0;position:relative;z-index:1;overflow:hidden">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:40px">
+      <p class="fu" style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">DEPOIMENTOS</p>
+      <h2 class="fu" data-d="1" style="font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:12px;color:#0A0A0A">Quem já deu o passo conta como foi</h2>
+      <p class="fu" data-d="2" style="color:#555555;font-size:clamp(14px,2.5vw,16px)">Gente como você, que apostou, cresceu e não tem mais&nbsp;dúvida.</p>
+    </div>
+
+    <!-- Shuffle stack -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div id="tc-stack" style="position:relative;width:340px;height:430px">
+
+        <!-- Card 0 — John -->
+        <div class="tc-card" data-idx="0">
+          <svg style="position:absolute;top:16px;right:16px;opacity:.06;width:48px;height:48px" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="#0A0A0A"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="#0A0A0A"/></svg>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <img src="imagens/John.png" alt="John" style="width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0" loading="lazy"/>
+            <div><div style="color:#0A0A0A;font-size:15px;font-weight:700">John</div><div style="color:#888888;font-size:13px">Personal Trainer · Dublin</div></div>
+          </div>
+          <div style="margin-bottom:12px"><span style="color:#FFC413;font-size:13px">★★★★★</span></div>
+          <p style="color:#555555;font-size:14px;line-height:1.75">"Eu entendia de treino, mas não fazia ideia de como vender meu acompanhamento. Ficava postando por postar e esperando o cliente chamar. A Vibe Digital não me jogou um pacote pronto; eles me ouviram e me mostraram a importância do marketing como base do negócio. Criaram uma estrutura clara para eu vender meu produto digital e organizar os alunos presenciais."</p>
+        </div>
+
+        <!-- Card 1 — Fernanda (featured) -->
+        <div class="tc-card featured" data-idx="1">
+          <svg style="position:absolute;top:16px;right:16px;opacity:.06;width:48px;height:48px" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="#009A44"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="#009A44"/></svg>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Fernanda" style="width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0" loading="lazy"/>
+            <div><div style="color:#0A0A0A;font-size:15px;font-weight:700">Fernanda</div><div style="color:#888888;font-size:13px">Empresa de Cleaner · Galway</div></div>
+          </div>
+          <div style="margin-bottom:12px"><span style="color:#FFC413;font-size:13px">★★★★★</span></div>
+          <p style="color:#555555;font-size:14px;line-height:1.75">"Minha equipe estava crescendo, mas a captação de clientes novos travou e eu perdia tempo qualificando leads errados. A Vibe Digital entrou com estratégia e automação de WhatsApp que me salvou. O cliente chega já pronto para contratar. Saí de 15 para 30 clientes fixos em pouco tempo, recomendo de olhos fechados."</p>
+        </div>
+
+        <!-- Card 2 — Leonardo -->
+        <div class="tc-card" data-idx="2">
+          <svg style="position:absolute;top:16px;right:16px;opacity:.06;width:48px;height:48px" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="#0A0A0A"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="#0A0A0A"/></svg>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <img src="imagens/Leonardo.png" alt="Leonardo" style="width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0" loading="lazy"/>
+            <div><div style="color:#0A0A0A;font-size:15px;font-weight:700">Leonardo</div><div style="color:#888888;font-size:13px">Barbeiro · Dublin</div></div>
+          </div>
+          <div style="margin-bottom:12px"><span style="color:#FFC413;font-size:13px">★★★★★</span></div>
+          <p style="color:#555555;font-size:14px;line-height:1.75">"Antes eu só abria a porta e ficava na torcida, esperando o cliente entrar. Achava que marketing era gasto, não investimento. A Vibe Digital abriu minha mente e me mostrou que o brasileiro aqui na Irlanda busca referência antes de decidir. Não foi sobre lotar do dia pra noite, foi sobre construir presença. Hoje eu entendo que não adianta esperar, tem que aparecer do jeito certo."</p>
+        </div>
+
+      </div>
+
+      <!-- Dots -->
+      <div class="tc-dot-w">
+        <button class="tc-dot active" data-idx="0" aria-label="Depoimento 1"></button>
+        <button class="tc-dot" data-idx="1" aria-label="Depoimento 2"></button>
+        <button class="tc-dot" data-idx="2" aria-label="Depoimento 3"></button>
+      </div>
+      <p style="color:#AAAAAA;font-size:12px;font-weight:500;margin-top:10px;letter-spacing:.04em">← arraste o card para ver o próximo →</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#fff;padding:64px 0;position:relative;z-index:1">
+  <div style="max-width:720px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:36px">
+      <p class="fu" style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">FAQ</p>
+      <h2 class="fu" data-d="1" style="font-size:clamp(28px,4vw,44px);font-weight:800;color:#0A0A0A">Perguntas frequentes</h2>
+    </div>
+    <div class="fu">
+      <div class="fi" style="border-bottom:1px solid #E5E5E5"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Vocês atendem negócios de qualquer setor?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Sim. Restaurantes, salões, empresas de limpeza, clínicas, consultórios e muito mais. O que une todos é o contexto: brasileiros empreendendo na Irlanda.</p></div></div>
+      <div class="fi" style="border-bottom:1px solid #E5E5E5"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Quanto custa trabalhar com a Vibe Digital?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Não temos tabela fixa. Cada cliente tem uma realidade diferente. Entendemos sua situação e apresentamos uma proposta justa. O melhor jeito é marcar uma conversa gratuita.</p></div></div>
+      <div class="fi" style="border-bottom:1px solid #E5E5E5"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Em quanto tempo vejo resultados?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Tráfego pago pode gerar resultado em dias. Landing pages e automações ficam prontas em até 2 semanas. Branding completo em até 4 semanas. A gente sempre te diz o que esperar e quando.</p></div></div>
+      <div class="fi" style="border-bottom:1px solid #E5E5E5"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Posso contratar apenas um serviço?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Com certeza. Muitos clientes começam com um serviço e vão expandindo conforme crescem. A ideia é que o investimento faça sentido no seu momento.</p></div></div>
+      <div class="fi" style="border-bottom:1px solid #E5E5E5"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Como funciona a comunicação e os relatórios?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Tudo em português, ponto de contato fixo na equipe, relatórios mensais com linguagem humana, e sempre disponíveis no WhatsApp.</p></div></div>
+      <div class="fi"><button class="ft" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;background:none;border:none;cursor:pointer;gap:16px"><span style="color:#0A0A0A;font-size:16px;font-weight:600">Preciso ser brasileiro pra trabalhar com vocês?</span><div class="fic" style="width:28px;height:28px;border-radius:50%;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 300ms"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#009A44" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="fb" style="max-height:0;overflow:hidden;transition:max-height 350ms ease"><p style="color:#555555;font-size:15px;line-height:1.7;padding-bottom:20px">Esse é nosso foco e onde a gente faz mais sentido. Mas se você tem um negócio na Irlanda e quer uma parceria próxima, pode mandar mensagem. A gente avalia.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL — dark contrast -->
+<section id="contato" style="background:#0A0A0A;padding:64px 0;position:relative;z-index:1">
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px">
+    <div class="fu" style="max-width:840px;margin:0 auto;border-radius:24px;padding:1px;background:linear-gradient(135deg,#009A44,#F47920)">
+      <div class="cta-box-inner" style="background:#111;border-radius:23px;padding:52px 40px;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,154,68,.1),transparent 70%);pointer-events:none"></div>
+        <p style="color:#009A44;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;position:relative">PRÓXIMO PASSO</p>
+        <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.15;margin-bottom:20px;position:relative;color:#fff">Pronto pra fazer seu negócio<br class="hide-mobile"> crescer de verdade na&nbsp;Irlanda?</h2>
+        <p style="color:rgba(255,255,255,0.65);font-size:clamp(15px,2.5vw,17px);line-height:1.7;max-width:500px;margin:0 auto 36px;position:relative">Você conta o que tá acontecendo no seu negócio, a gente escuta com atenção e já sai da conversa com um caminho claro. São 30 minutos gratuitos. Sem&nbsp;compromisso.</p>
+        <a href="https://wa.me/353000000000" class="btn-p cta-main-btn" style="font-size:17px;padding:18px 40px;border-radius:12px;position:relative;box-shadow:0 0 48px rgba(0,154,68,.4)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.121 1.532 5.854L0 24l6.335-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.596-.487-5.112-1.341l-.367-.214-3.762.893.953-3.681-.233-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Falar com a Vibe agora
+        </a>
+        <p style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:16px;position:relative">Resposta em até 24 horas. Sem spam, sem pressão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#fff;border-top:1px solid #E5E5E5;position:relative;z-index:1">
+  <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(0,154,68,.5) 20%,rgba(255,196,19,.6) 50%,rgba(244,121,32,.5) 80%,transparent)"></div>
+  <div style="max-width:1152px;margin:0 auto;padding:40px 24px 24px">
+    <div class="footer-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px">
+      <div class="footer-logo-col" style="grid-column:span 2">
+        <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:20px">
+          <img src="imagens/logo-new.png" alt="Vibe Digital" class="logo-vibe" style="height:112px;object-fit:contain" />
+        </a>
+        <div style="display:flex;gap:10px">
+          <a href="#" class="soc" style="width:36px;height:36px;border-radius:8px;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#555555" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#555555" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="#555555"/></svg></a>
+          <a href="#" class="soc" style="width:36px;height:36px;border-radius:8px;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="#555555" stroke-width="1.8" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="#555555" stroke-width="1.8" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="#555555" stroke-width="1.8"/></svg></a>
+          <a href="https://wa.me/353000000000" class="soc" style="width:36px;height:36px;border-radius:8px;background:#F7F7F7;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="#555555"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.121 1.532 5.854L0 24l6.335-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.596-.487-5.112-1.341l-.367-.214-3.762.893.953-3.681-.233-.378A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 style="color:#0A0A0A;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Serviços</h4>
+        <ul style="display:flex;flex-direction:column;gap:10px;list-style:none">
+          <li><a href="#servicos" style="color:#555555;font-size:14px;text-decoration:none;transition:color 200ms" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Google Ads</a></li>
+          <li><a href="#servicos" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Meta Ads</a></li>
+          <li><a href="#servicos" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Landing Pages Profissionais</a></li>
+          <li><a href="#servicos" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Automação de WhatsApp</a></li>
+          <li><a href="#servicos" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Branding</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#0A0A0A;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Empresa</h4>
+        <ul style="display:flex;flex-direction:column;gap:10px;list-style:none;margin-bottom:24px">
+          <li><a href="#sobre" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Quem somos</a></li>
+          <li><a href="#portfolio" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Portfólio</a></li>
+          <li><a href="#depoimentos" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">Depoimentos</a></li>
+          <li><a href="#faq" style="color:#555555;font-size:14px;text-decoration:none" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#555555'">FAQ</a></li>
+        </ul>
+        <h4 style="color:#0A0A0A;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Contato</h4>
+        <p style="color:#555555;font-size:13px;margin-bottom:4px"><a href="mailto:vibedigital.irlanda@gmail.com" style="color:#555555;text-decoration:none" onmouseover="this.style.color='#009A44'" onmouseout="this.style.color='#555555'">vibedigital.irlanda@gmail.com</a></p>
+        <p style="color:#555555;font-size:13px">Dublin, Ireland</p>
+      </div>
+    </div>
+    <div style="height:1px;background:#E5E5E5;margin-bottom:24px"></div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center" class="md:flex-row md:justify-between">
+      <p style="color:#888888;font-size:13px">© 2026 Vibe Digital. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:center">
+        <button onclick="abrirModal('modalPrivacidade')" style="background:none;border:none;cursor:pointer;color:#888888;font-size:13px;padding:0;font-family:inherit;transition:color 200ms" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#888888'">Política de Privacidade</button>
+        <span style="color:#E5E5E5">·</span>
+        <button onclick="abrirModal('modalTermos')" style="background:none;border:none;cursor:pointer;color:#888888;font-size:13px;padding:0;font-family:inherit;transition:color 200ms" onmouseover="this.style.color='#0A0A0A'" onmouseout="this.style.color='#888888'">Termos de Serviço</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CANVAS ORBS — subtle light-theme tones
+(function(){
+  const c=document.getElementById('hc');
+  function rs(){c.width=window.innerWidth;c.height=window.innerHeight}
+  rs();window.addEventListener('resize',rs);
+  const x=c.getContext('2d');
+  const o=[
+    {x:c.width*.2,y:c.height*.35,r:380,dx:.35,dy:.25,c1:'rgba(0,154,68,0.06)',c2:'rgba(0,154,68,0)'},
+    {x:c.width*.75,y:c.height*.6,r:300,dx:-.28,dy:.4,c1:'rgba(244,121,32,0.05)',c2:'rgba(0,154,68,0)'},
+    {x:c.width*.5,y:c.height*.12,r:220,dx:.2,dy:-.35,c1:'rgba(255,196,19,0.04)',c2:'rgba(0,0,0,0)'}
+  ];
+  function draw(){
+    x.clearRect(0,0,c.width,c.height);
+    o.forEach(b=>{
+      const g=x.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+      g.addColorStop(0,b.c1);g.addColorStop(1,b.c2);
+      x.fillStyle=g;x.beginPath();x.arc(b.x,b.y,b.r,0,Math.PI*2);x.fill();
+      b.x+=b.dx;b.y+=b.dy;
+      if(b.x-b.r<0||b.x+b.r>c.width)b.dx*=-1;
+      if(b.y-b.r<0||b.y+b.r>c.height)b.dy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// FADE-UP
+const fo=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');fo.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.fu').forEach(el=>fo.observe(el));
+
+// ANIMATED UNDERLINE — draw SVG path on scroll into view
+const auObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('drawn');auObs.unobserve(e.target)}})},{threshold:0.4});
+document.querySelectorAll('.au-path').forEach(el=>auObs.observe(el));
+
+// QUEM SOMOS — animate pillars, center card and stats on scroll
+const qsObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('qs-vis');qsObs.unobserve(e.target)}})},{threshold:0.15});
+document.querySelectorAll('.qs-pillar,.qs-card,.qs-stat,.qs-cta-card').forEach(el=>qsObs.observe(el));
+
+// 3D TILT — Service Cards
+(function(){
+  document.querySelectorAll('.isv-opt').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      if(!this.classList.contains('isv-act')) return;
+      var r=this.getBoundingClientRect();
+      var rx=((e.clientY-r.top-r.height/2)/(r.height/2))*-7;
+      var ry=((e.clientX-r.left-r.width/2)/(r.width/2))*9;
+      this.style.transition='flex 720ms cubic-bezier(.4,0,.2,1),box-shadow 400ms,transform 0.08s ease-out';
+      this.style.transform='perspective(1000px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale3d(1.03,1.03,1.03)';
+    });
+    card.addEventListener('mouseleave',function(){
+      this.style.transition='';
+      this.style.transform='';
+    });
+  });
+})();
+
+// INTERACTIVE SERVICE SELECTOR
+function isvSelect(el){
+  document.querySelectorAll('#isvWrap .isv-opt').forEach(o=>o.classList.remove('isv-act'));
+  el.classList.add('isv-act');
+}
+// Entrance animation on scroll into view
+(function(){
+  const wrap=document.getElementById('isvWrap');
+  if(!wrap)return;
+  const obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      wrap.querySelectorAll('.isv-opt').forEach(function(o,i){
+        setTimeout(function(){o.classList.add('isv-entered');},150*i);
+      });
+      obs.unobserve(wrap);
+    }
+  },{threshold:0.15});
+  obs.observe(wrap);
+})();
+
+// COUNT-UP
+function cu(el){
+  const t=parseFloat(el.dataset.target),pr=el.dataset.prefix||'',su=el.dataset.suffix||'',dc=t%1!==0,d=1800,s=performance.now();
+  function u(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3),v=dc?(t*e).toFixed(1):Math.floor(t*e);el.textContent=pr+v+su;if(p<1)requestAnimationFrame(u)}
+  requestAnimationFrame(u);
+}
+const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){cu(e.target);co.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+
+// FAQ
+document.querySelectorAll('.fi').forEach(item=>{
+  item.querySelector('.ft').addEventListener('click',()=>{
+    const op=item.classList.contains('open');
+    document.querySelectorAll('.fi.open').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.fb').style.maxHeight='0';
+      const ic=i.querySelector('.fic');ic.style.transform='rotate(0deg)';ic.style.background='#F7F7F7';ic.style.borderColor='#E5E5E5';
+    });
+    if(!op){
+      item.classList.add('open');
+      const b=item.querySelector('.fb');b.style.maxHeight=b.scrollHeight+'px';
+      const ic=item.querySelector('.fic');ic.style.transform='rotate(45deg)';ic.style.background='rgba(0,154,68,.12)';ic.style.borderColor='rgba(0,154,68,.35)';
+    }
+  });
+});
+
+// MOBILE MENU
+const mb=document.getElementById('mb'),mm=document.getElementById('mm');
+if(mb&&mm){mb.addEventListener('click',()=>mm.classList.toggle('hidden'));document.querySelectorAll('#mm a').forEach(a=>a.addEventListener('click',()=>mm.classList.add('hidden')));}
+
+// HERO WORD ANIMATION
+(function(){
+  // Headline: each word fires in sequence
+  document.querySelectorAll('.hw').forEach(el=>{
+    const d=(parseInt(el.dataset.delay)||0)+300;
+    setTimeout(()=>{ el.style.animation='wordAppear 0.85s ease-out forwards'; },d);
+  });
+  // Subheadline: enters as a block after headline finishes
+  const sub=document.getElementById('hero-sub');
+  if(sub) setTimeout(()=>{ sub.style.animation='wordAppear 0.9s ease-out forwards'; },1200);
+})();
+
+// HERO SPARKLES
+(function(){
+  const cv=document.getElementById('hero-sparks');
+  const hero=document.getElementById('hero');
+  if(!cv||!hero) return;
+  const ctx=cv.getContext('2d');
+
+  function resize(){
+    cv.width=hero.offsetWidth;
+    cv.height=hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  // Generate particles — density scales with area
+  function makePts(){
+    const area=(cv.width*cv.height)/1000;
+    const n=Math.round(Math.min(area*0.55,260));
+    return Array.from({length:n},()=>({
+      x:Math.random(),
+      y:Math.random(),
+      r:Math.random()*1.2+0.3,          // 0.3–1.5 px
+      vx:(Math.random()-.5)*0.00022,
+      vy:(Math.random()-.5)*0.00022,
+      phase:Math.random()*Math.PI*2,
+      speed:Math.random()*0.008+0.004   // twinkle speed
+    }));
+  }
+  let pts=makePts();
+  window.addEventListener('resize',()=>{ pts=makePts(); });
+
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    t++;
+    const W=cv.width, H=cv.height;
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=1; if(p.x>1)p.x=0;
+      if(p.y<0)p.y=1; if(p.y>1)p.y=0;
+      const alpha=0.08+(Math.sin(t*p.speed+p.phase)+1)/2*0.88;
+      ctx.beginPath();
+      ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${alpha.toFixed(3)})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+
+
+
+// TESTIMONIALS SHUFFLE STACK
+(function(){
+  const stack=document.getElementById('tc-stack');
+  if(!stack) return;
+  const cards=Array.from(stack.querySelectorAll('.tc-card'));
+  const dots=Array.from(document.querySelectorAll('.tc-dot'));
+
+  // pos[cardIndex] = layer (0=front,1=middle,2=back)
+  let pos=[0,1,2];
+
+  // Layer definitions: front, middle, back
+  const L=[
+    {tx:0,  ty:0,  rot:0,  sc:1,    z:3},
+    {tx:10, ty:7,  rot:5,  sc:0.96, z:2},
+    {tx:-8, ty:14, rot:-3, sc:0.92, z:1}
+  ];
+
+  function applyPos(animated){
+    cards.forEach((c,ci)=>{
+      const l=L[pos[ci]];
+      c.style.transition=animated?'transform 420ms cubic-bezier(0.34,1.56,0.64,1)':'none';
+      c.style.transform=`translateX(${l.tx}px) translateY(${l.ty}px) rotate(${l.rot}deg) scale(${l.sc})`;
+      c.style.zIndex=l.z;
+    });
+    const fi=pos.indexOf(0);
+    dots.forEach((d,i)=>d.classList.toggle('active',i===fi));
+  }
+  applyPos(false);
+
+  // Auto-size container to tallest card (important on mobile where cards are taller)
+  function autoHeight(){
+    let maxH=0;
+    cards.forEach(c=>{ maxH=Math.max(maxH,c.offsetHeight); });
+    if(maxH>0) stack.style.height=(maxH+20)+'px';
+  }
+  setTimeout(autoHeight,120);
+  window.addEventListener('resize',autoHeight);
+
+  function doShuffle(){
+    pos=pos.map(p=>p===0?2:p===1?0:1);
+    applyPos(true);
+  }
+
+  // Dot navigation
+  dots.forEach((dot,di)=>{
+    dot.addEventListener('click',()=>{
+      const steps=pos[di];
+      if(!steps) return;
+      doShuffle();
+      if(steps===2) setTimeout(doShuffle,480);
+    });
+  });
+
+  // Drag helpers
+  let dragging=false,startX=0,startY=0,dragX=0;
+  function frontCard(){return cards[pos.indexOf(0)];}
+
+  function onStart(x,y){
+    dragging=true; startX=x; startY=y; dragX=0;
+    const fc=frontCard();
+    if(fc) fc.style.transition='none';
+  }
+  function onMove(x,y){
+    if(!dragging) return;
+    dragX=x-startX;
+    const dy=(y-startY)*0.25;
+    const rot=dragX*0.07;
+    const fc=frontCard();
+    if(fc) fc.style.transform=`translateX(${dragX}px) translateY(${dy}px) rotate(${rot}deg) scale(1)`;
+  }
+  function onEnd(){
+    if(!dragging) return;
+    dragging=false;
+    if(Math.abs(dragX)>100){
+      const fci=pos.indexOf(0);
+      const fc=cards[fci];
+      const dir=dragX>0?1:-1;
+      // Fly front card out
+      if(fc){
+        fc.style.transition='transform 340ms ease,opacity 280ms ease';
+        fc.style.transform=`translateX(${dir*520}px) translateY(-20px) rotate(${dir*28}deg) scale(0.85)`;
+        fc.style.opacity='0';
+      }
+      // Slide remaining cards into new positions
+      const newPos=pos.map(p=>p===0?2:p===1?0:1);
+      cards.forEach((c,ci)=>{
+        if(ci===fci) return;
+        const l=L[newPos[ci]];
+        c.style.transition='transform 400ms cubic-bezier(0.34,1.56,0.64,1)';
+        c.style.transform=`translateX(${l.tx}px) translateY(${l.ty}px) rotate(${l.rot}deg) scale(${l.sc})`;
+        c.style.zIndex=l.z;
+      });
+      // Reset flown card to back position
+      setTimeout(()=>{
+        pos=newPos;
+        const bl=L[2];
+        if(fc){
+          fc.style.transition='none';
+          fc.style.transform=`translateX(${bl.tx}px) translateY(${bl.ty}px) rotate(${bl.rot}deg) scale(${bl.sc})`;
+          fc.style.zIndex=bl.z;
+          fc.style.opacity='1';
+        }
+        const fi=pos.indexOf(0);
+        dots.forEach((d,i)=>d.classList.toggle('active',i===fi));
+      },360);
+    } else {
+      applyPos(true);
+    }
+  }
+
+  // Mouse events
+  stack.addEventListener('mousedown',e=>{
+    if(e.target.closest('.tc-card')===frontCard()){
+      onStart(e.clientX,e.clientY); e.preventDefault();
+    }
+  });
+  window.addEventListener('mousemove',e=>{if(dragging) onMove(e.clientX,e.clientY);});
+  window.addEventListener('mouseup',()=>{if(dragging) onEnd();});
+
+  // Touch events
+  stack.addEventListener('touchstart',e=>{
+    if(e.target.closest('.tc-card')===frontCard()){
+      const t=e.touches[0]; onStart(t.clientX,t.clientY);
+    }
+  },{passive:true});
+  stack.addEventListener('touchmove',e=>{
+    if(dragging){const t=e.touches[0]; onMove(t.clientX,t.clientY); e.preventDefault();}
+  },{passive:false});
+  stack.addEventListener('touchend',()=>{if(dragging) onEnd();});
+
+})();
+
+</script>
+
+<!-- ═══════════════════════════════════════
+     MODAL — POLÍTICA DE PRIVACIDADE
+     ═══════════════════════════════════════ -->
+<div id="modalPrivacidade" class="lgl-overlay" role="dialog" aria-modal="true" aria-labelledby="privTitulo">
+  <div class="lgl-box">
+    <div class="lgl-head">
+      <div>
+        <div class="lgl-tag">Vibe Digital</div>
+        <div class="lgl-title" id="privTitulo">Política de Privacidade</div>
+      </div>
+      <button class="lgl-close" onclick="fecharModal('modalPrivacidade')" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="lgl-body">
+      <p>Última atualização: abril de 2026. Esta Política de Privacidade descreve como a <strong>Vibe Digital</strong> coleta, usa e protege as informações pessoais dos usuários deste site, em conformidade com o <strong>GDPR</strong> (Regulamento Geral de Proteção de Dados da União Europeia) e a legislação irlandesa aplicável.</p>
+
+      <h3>1. Quem somos</h3>
+      <p>Vibe Digital é uma agência de marketing digital sediada em Dublin, Irlanda, especializada em atender empreendedores brasileiros. Para dúvidas sobre esta política, entre em contato: <a href="mailto:vibedigital.irlanda@gmail.com">vibedigital.irlanda@gmail.com</a></p>
+
+      <h3>2. Quais dados coletamos</h3>
+      <p>Coletamos apenas os dados estritamente necessários para prestar nossos serviços:</p>
+      <ul>
+        <li><strong>Dados de contato:</strong> nome, e-mail, número de telefone/WhatsApp e nome do negócio, fornecidos voluntariamente por você ao preencher formulários ou entrar em contato conosco.</li>
+        <li><strong>Dados de navegação:</strong> endereço IP, tipo de navegador, páginas visitadas e tempo de permanência, coletados automaticamente por ferramentas de análise (como Google Analytics).</li>
+        <li><strong>Comunicações:</strong> mensagens trocadas por e-mail ou WhatsApp no âmbito da relação comercial.</li>
+      </ul>
+
+      <h3>3. Como usamos seus dados</h3>
+      <ul>
+        <li>Responder às suas solicitações e fornecer orçamentos;</li>
+        <li>Executar os serviços contratados;</li>
+        <li>Enviar informações relevantes sobre nossos serviços, caso você tenha consentido;</li>
+        <li>Melhorar a experiência de navegação no nosso site;</li>
+        <li>Cumprir obrigações legais e regulatórias.</li>
+      </ul>
+
+      <h3>4. Base legal para o tratamento</h3>
+      <p>Tratamos seus dados com base em: (a) execução de contrato, quando necessário para prestar nossos serviços; (b) interesse legítimo, para fins de comunicação e melhoria dos serviços; (c) consentimento, quando aplicável.</p>
+
+      <h3>5. Compartilhamento de dados</h3>
+      <p>A Vibe Digital <strong>não vende nem aluga</strong> seus dados pessoais a terceiros. Podemos compartilhar informações apenas com:</p>
+      <ul>
+        <li>Ferramentas de tecnologia necessárias para operar nossos serviços (Google Ads, Meta, ferramentas de automação), mediante acordos de processamento de dados;</li>
+        <li>Autoridades competentes, quando exigido por lei.</li>
+      </ul>
+
+      <h3>6. Retenção de dados</h3>
+      <p>Seus dados são mantidos pelo período necessário para cumprir as finalidades descritas nesta política ou conforme exigido por lei. Dados de clientes são mantidos por até 7 anos para fins fiscais e contábeis.</p>
+
+      <h3>7. Seus direitos</h3>
+      <p>Nos termos do GDPR, você tem direito a:</p>
+      <ul>
+        <li>Acessar os dados que temos sobre você;</li>
+        <li>Corrigir dados incorretos ou incompletos;</li>
+        <li>Solicitar a exclusão dos seus dados ("direito ao esquecimento");</li>
+        <li>Opor-se ao tratamento ou solicitar a limitação do uso;</li>
+        <li>Portabilidade dos seus dados.</li>
+      </ul>
+      <p>Para exercer qualquer desses direitos, envie um e-mail para <a href="mailto:vibedigital.irlanda@gmail.com">vibedigital.irlanda@gmail.com</a>. Respondemos em até 30 dias.</p>
+
+      <h3>8. Cookies</h3>
+      <p>Utilizamos cookies essenciais para o funcionamento do site e cookies analíticos para entender o comportamento dos visitantes. Você pode configurar seu navegador para recusar cookies, porém algumas funcionalidades podem ser afetadas.</p>
+
+      <h3>9. Segurança</h3>
+      <p>Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acesso não autorizado, perda ou divulgação indevida.</p>
+
+      <h3>10. Alterações desta política</h3>
+      <p>Podemos atualizar esta política periodicamente. A versão mais recente estará sempre disponível neste site. Mudanças significativas serão comunicadas por e-mail aos clientes ativos.</p>
+
+      <h3>11. Contato</h3>
+      <p>Vibe Digital — Dublin, Ireland<br>
+      E-mail: <a href="mailto:vibedigital.irlanda@gmail.com">vibedigital.irlanda@gmail.com</a></p>
+    </div>
+    <div class="lgl-footer">
+      <button onclick="fecharModal('modalPrivacidade')" class="btn-p" style="padding:10px 24px;font-size:14px">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MODAL — TERMOS DE SERVIÇO
+     ═══════════════════════════════════════ -->
+<div id="modalTermos" class="lgl-overlay" role="dialog" aria-modal="true" aria-labelledby="termosTitulo">
+  <div class="lgl-box">
+    <div class="lgl-head">
+      <div>
+        <div class="lgl-tag">Vibe Digital</div>
+        <div class="lgl-title" id="termosTitulo">Termos de Serviço</div>
+      </div>
+      <button class="lgl-close" onclick="fecharModal('modalTermos')" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="lgl-body">
+      <p>Última atualização: abril de 2026. Ao contratar ou utilizar os serviços da <strong>Vibe Digital</strong>, você concorda com os termos abaixo. Leia com atenção antes de fechar qualquer proposta.</p>
+
+      <h3>1. Identificação</h3>
+      <p><strong>Vibe Digital</strong> é uma agência de marketing digital sediada em Dublin, Irlanda. Contato: <a href="mailto:vibedigital.irlanda@gmail.com">vibedigital.irlanda@gmail.com</a></p>
+
+      <h3>2. Serviços oferecidos</h3>
+      <p>A Vibe Digital presta serviços de marketing digital, incluindo mas não se limitando a:</p>
+      <ul>
+        <li>Gestão de Google Ads e Meta Ads;</li>
+        <li>Criação e otimização de Landing Pages;</li>
+        <li>Automação de WhatsApp;</li>
+        <li>Branding e identidade visual;</li>
+        <li>Consultoria e estratégia digital.</li>
+      </ul>
+      <p>O escopo exato de cada projeto é definido em proposta escrita aceita pelo cliente antes do início dos trabalhos.</p>
+
+      <h3>3. Contratação e pagamento</h3>
+      <ul>
+        <li>Os serviços são formalizados por proposta e aceite escrito (e-mail ou documento assinado);</li>
+        <li>O pagamento deve ser realizado conforme os prazos acordados em proposta;</li>
+        <li>O atraso no pagamento pode resultar na suspensão dos serviços, sem responsabilidade da Vibe Digital pelos impactos decorrentes;</li>
+        <li>Projetos de criação (landing pages, branding) exigem um sinal de 50% antes do início.</li>
+      </ul>
+
+      <h3>4. Propriedade intelectual</h3>
+      <p>Todo o material criado pela Vibe Digital (layouts, textos, estratégias) permanece de propriedade da agência até o pagamento integral. Após a quitação, os direitos de uso são transferidos ao cliente conforme definido em proposta.</p>
+      <p>O cliente é responsável por garantir que os materiais fornecidos (logos, imagens, textos) não violam direitos de terceiros.</p>
+
+      <h3>5. Responsabilidades do cliente</h3>
+      <ul>
+        <li>Fornecer informações precisas e atualizadas sobre o negócio;</li>
+        <li>Garantir acesso às plataformas necessárias (Google Ads, Meta Business, etc.);</li>
+        <li>Aprovar artes e estratégias dentro dos prazos acordados para não atrasar o projeto;</li>
+        <li>Manter os dados de acesso fornecidos em sigilo.</li>
+      </ul>
+
+      <h3>6. Resultados e garantias</h3>
+      <p>A Vibe Digital emprega as melhores práticas do mercado, mas <strong>não garante resultados específicos</strong> em termos de volume de leads, vendas ou ROI, pois estes dependem de fatores externos (mercado, produto, sazonalidade, verba de mídia). Nos comprometemos com transparência, relatórios claros e otimização contínua.</p>
+
+      <h3>7. Cancelamento</h3>
+      <ul>
+        <li>Contratos mensais podem ser cancelados com aviso prévio de 30 dias;</li>
+        <li>Projetos pontuais (sites, branding) não são reembolsáveis após o início da produção;</li>
+        <li>A Vibe Digital pode encerrar a prestação de serviços em caso de violação destes termos, sem reembolso proporcional.</li>
+      </ul>
+
+      <h3>8. Confidencialidade</h3>
+      <p>Ambas as partes comprometem-se a manter confidencialidade sobre informações estratégicas e comerciais trocadas durante a relação de serviço.</p>
+
+      <h3>9. Limitação de responsabilidade</h3>
+      <p>A Vibe Digital não se responsabiliza por perdas indiretas, perda de receita ou danos decorrentes de decisões tomadas pelo cliente com base nas estratégias apresentadas. Nossa responsabilidade limita-se ao valor pago pelo serviço contratado.</p>
+
+      <h3>10. Lei aplicável e foro</h3>
+      <p>Estes termos são regidos pelas leis da República da Irlanda. Eventuais disputas serão resolvidas preferencialmente por mediação. Na impossibilidade, fica eleito o foro da cidade de Dublin.</p>
+
+      <h3>11. Contato</h3>
+      <p>Vibe Digital — Dublin, Ireland<br>
+      E-mail: <a href="mailto:vibedigital.irlanda@gmail.com">vibedigital.irlanda@gmail.com</a></p>
+    </div>
+    <div class="lgl-footer">
+      <button onclick="fecharModal('modalTermos')" class="btn-p" style="padding:10px 24px;font-size:14px">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// MODAIS LEGAIS
+function abrirModal(id){
+  const m=document.getElementById(id);
+  m.classList.add('lgl-open');
+  document.body.style.overflow='hidden';
+}
+function fecharModal(id){
+  const m=document.getElementById(id);
+  m.classList.remove('lgl-open');
+  document.body.style.overflow='';
+}
+// Fechar ao clicar fora
+document.querySelectorAll('.lgl-overlay').forEach(function(el){
+  el.addEventListener('click',function(e){
+    if(e.target===el) fecharModal(el.id);
+  });
+});
+// Fechar com ESC
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.querySelectorAll('.lgl-overlay.lgl-open').forEach(function(el){
+      fecharModal(el.id);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

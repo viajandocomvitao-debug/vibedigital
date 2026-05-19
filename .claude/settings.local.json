@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m markitdown Vibe_Digital_Pitch_Deck.pptx)",
+      "Bash(python -m pip install \"markitdown[pptx]\" --quiet)",
+      "Bash(\\\\.bak)",
+      "Bash(backup\")",
+      "Bash(grep -E \"\\\\.\\(html|htm\\)$\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(grep -v '^\\\\s*$')",
+      "Bash(awk '{print $9}')",
+      "Bash(xargs -I {} basename {})",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(python3 -c ' *)",
+      "Bash(dir /B /O-D \"C:\\\\Users\\\\Usuario\\\\Downloads\")"
+    ]
+  }
+}

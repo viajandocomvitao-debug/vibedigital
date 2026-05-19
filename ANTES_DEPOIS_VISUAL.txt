@@ -1,0 +1,208 @@
+===============================================================================
+                    ANTES vs DEPOIS — VISUAL DOS SERVIÇOS
+===============================================================================
+
+ANTES (6 SERVIÇOS):
+───────────────────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────┐
+│ TRÁFEGO PAGO                                            │
+│                                                         │
+│ Meta Ads e Google Ads com segmentação precisa para o   │
+│ mercado irlandês. Seu anúncio na frente de quem        │
+│ realmente vai comprar — sem desperdiçar euro.          │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ GESTÃO DE REDES SOCIAIS                                 │
+│                                                         │
+│ Conteúdo que conecta, engaja e converte — em          │
+│ português, em inglês, ou nos dois. A sua marca         │
+│ presente e consistente onde os seus clientes estão.     │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ SITES E LANDING PAGES                                   │
+│                                                         │
+│ Páginas que não são só bonitas — são construídas        │
+│ para converter visitante em cliente. Rápidas,           │
+│ responsivas, otimizadas e prontas para vender.          │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ SEO                                                     │
+│                                                         │
+│ Seja encontrado no Google por clientes irlandeses       │
+│ que estão ativamente buscando o que você oferece.       │
+│ Resultado orgânico que cresce todo mês.                 │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ IDENTIDADE VISUAL E BRANDING                            │
+│                                                         │
+│ Da logo à paleta de cores, do tom de voz à             │
+│ presença visual completa. Uma marca que passa           │
+│ credibilidade no mercado irlandês e representa          │
+│ quem você é.                                            │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ CONSULTORIA ESTRATÉGICA                                 │
+│                                                         │
+│ Diagnóstico honesto do seu negócio e um plano de        │
+│ ação concreto. Para quem quer clareza antes de          │
+│ investir — ou quer saber por que não está crescendo.    │
+└─────────────────────────────────────────────────────────┘
+
+
+PROBLEMAS IDENTIFICADOS (ANTES):
+  - "Tráfego Pago" mistura Google + Meta (confuso)
+  - Sem diferenciação entre canais de marketing
+  - 6 serviços = muitas opções (paralisia de escolha)
+  - Serviços genéricos, sem posicionamento claro
+  - "Consultoria" e "SEO" baixa demanda para este público
+
+
+===============================================================================
+
+DEPOIS (5 SERVIÇOS + DESTAQUES):
+───────────────────────────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────────┐
+│ LANDING PAGES PROFISSIONAIS                             │
+│                                                         │
+│ Páginas construídas para converter visitante em         │
+│ cliente, não só para ficar bonita no portfólio.         │
+│ Otimizadas para velocidade, mobile-first, com copy      │
+│ persuasivo e CTAs estratégicos. Sua landing page        │
+│ funciona 24/7 gerando leads e vendas enquanto você      │
+│ dorme.                                                  │
+│                                                         │
+│ Destaque: Rápidas, responsivas, prontas vender         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ GOOGLE ADS                                              │
+│                                                         │
+│ Apareça no topo do Google quando brasileiros e          │
+│ irlandeses buscam exatamente o que você oferece.        │
+│ Tráfego pago qualificado, resultado em poucos dias,     │
+│ e ROI que você consegue rastrear. Google Ads é para     │
+│ quem quer vender rápido, sem esperar meses por          │
+│ organicidade.                                           │
+│                                                         │
+│ Destaque: Resultado rápido, tráfego qualificado,        │
+│           ROI mensurável                                │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ META ADS                                                │
+│                                                         │
+│ Facebook e Instagram com segmentação cirúrgica para     │
+│ atingir brasileiros na Irlanda. A gente monta           │
+│ campanhas que conectam com o seu público exato —        │
+│ e converte interesse em vendas reais. Meta Ads é        │
+│ perfeito para gerar reconhecimento de marca e           │
+│ vender pra quem já está aqui.                           │
+│                                                         │
+│ Destaque: Segmentação precisa, alcance local,           │
+│           conversão garantida                           │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ AUTOMAÇÃO DE WHATSAPP                                   │
+│                                                         │
+│ Chatbot e automação para responder seus clientes        │
+│ 24/7 no WhatsApp — sem perder oportunidade de venda.    │
+│ Qualifica leads automaticamente, responde dúvidas       │
+│ frequentes, e deixa contato pronto pra fechar a         │
+│ venda quando você acordar. WhatsApp é o app que         │
+│ todo mundo usa; a gente coloca ele pra trabalhar        │
+│ pra você.                                               │
+│                                                         │
+│ Destaque: Respostas automáticas, qualificação           │
+│           de leads, zero oportunidades perdidas         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│ BRANDING                                                │
+│                                                         │
+│ Mais que logo e cores bonitas. Branding é sua           │
+│ identidade completa: logo, paleta visual, tom de        │
+│ voz, guidelines de marca. A gente cria uma marca        │
+│ que passa credibilidade no mercado irlandês —           │
+│ profissional, confiável — mas que ainda guarda a        │
+│ essência brasileira. Sua marca fica única e             │
+│ memorável.                                              │
+│                                                         │
+│ Destaque: Identidade visual completa,                   │
+│           credibilidade no mercado local,               │
+│           identidade brasileira preservada              │
+└─────────────────────────────────────────────────────────┘
+
+
+MELHORIAS IMPLEMENTADAS (DEPOIS):
+  - Google Ads & Meta Ads separados (claro qual escolher)
+  - Adicionado Automação WhatsApp (novo serviço em demanda)
+  - 5 serviços = clara, não sobrecarrega decisão
+  - Cada serviço tem "Destaque" visual (benefícios claros)
+  - Copy 50% mais longo = mais persuasivo
+  - Palavras-chave estratégicas por canal (SEO)
+  - Posicionamento claro (rápido vs segmentado vs automação)
+
+
+===============================================================================
+
+RESUMO DE MUDANÇAS EXATAS:
+───────────────────────────────────────────────────────────────────────────────
+
+REMOVIDO (3 serviços):
+  - Gestão de Redes Sociais
+  - SEO
+  - Consultoria Estratégica
+
+ADICIONADO (1 novo):
+  - Automação de Whatsapp
+
+SEPARADO (de 1 em 2):
+  - Tráfego Pago → Google Ads + Meta Ads
+
+RENOMEADO (mantido, melhorado):
+  - Sites e Landing Pages → Landing Pages Profissionais
+  - Identidade Visual e Branding → Branding
+
+TOTAL: 6 serviços → 5 serviços
+COPY ADICIONADO: +50% por serviço
+DESTAQUES: +5 (um por serviço)
+
+
+===============================================================================
+
+RESULTADO ESPERADO:
+───────────────────────────────────────────────────────────────────────────────
+
+CLIENTE VÊ:
+  - 5 opções claras (não 6 confusas)
+  - Cada uma com benefício claro ("Destaque")
+  - Entende diferença entre Google Ads vs Meta Ads
+  - Vê que tem automação (WhatsApp) — diferencial
+  - Sente credibilidade em branding (essência brasileira preservada)
+
+CONVERSÃO:
+  - Menos paralisia de escolha (5 vs 6)
+  - Mais info para decidir (copy 70% mais longo)
+  - CTAs claros ("qual serviço é pra mim?")
+  - Tração mais distribuída entre 5
+
+SEO:
+  - Mais palavras-chave (5 serviços x 5+ keywords cada)
+  - Mais intenção de busca coberta
+  - Mais chances de rankear para cada canal
+
+===============================================================================
+
+Versão: FINAL
+Status: PRONTO PARA IMPLEMENTAÇÃO
+Data: 19 de Abril de 2026
+
+Boa sorte na implementação!
