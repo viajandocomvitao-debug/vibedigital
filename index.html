@@ -234,16 +234,34 @@ p{text-wrap:pretty}
      extensão horizontal da imagem. A cor de fundo (#04080f) preenche
      o espaço abaixo de forma imperceptível sob o overlay escuro.
   ──────────────────────────────────────────────────────────────── */
+  /* Hero mobile — imagem acima do texto, sem sobreposição */
   #hero {
-    align-items: flex-end !important;
-    padding-bottom: 52px !important;
-    background-image: url('imagens/paises-hero mobile.png') !important;
-    background-size: 80% auto !important;
-    background-position: center top !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-top: 78px !important;
+    padding-bottom: 44px !important;
+    background-image: none !important;        /* imagem vem como <img> real */
     background-color: #04080f !important;
+    gap: 0 !important;
+  }
+  /* Imagem dos países: visível e proporcional no mobile */
+  .hero-mobile-img {
+    display: block !important;
+    width: 88% !important;
+    max-width: 330px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    margin: 0 auto 28px !important;
+    flex-shrink: 0 !important;
+    opacity: 0.95;
   }
   /* Hero button: full width on mobile */
   #hero .btn-p { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+  /* Headline: menos margem inferior no mobile */
+  #hero h1 { margin-bottom: 18px !important; font-size: clamp(24px,6.5vw,32px) !important; }
+  /* Social proof: menos margem inferior no mobile */
+  #hero .fu[data-d="2"] { margin-bottom: 20px !important; }
 }
 
 /* Tablet (640–1023px) */
@@ -356,6 +374,8 @@ p{text-wrap:pretty}
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.45) 100%);z-index:0"></div>
   <!-- Sparkles canvas -->
   <canvas id="hero-sparks" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
+  <!-- Imagem dos países — visível apenas no mobile (via CSS) -->
+  <img src="imagens/paises-hero mobile.png" alt="Brasil e Irlanda" class="hero-mobile-img" style="display:none;position:relative;z-index:2;pointer-events:none" loading="eager"/>
   <div style="max-width:900px;margin:0 auto;padding:0 24px;width:100%;position:relative;z-index:2;text-align:center">
       <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:28px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">única</span> <span class="hw" data-delay="200">agência</span> <span class="hw" data-delay="300">feita</span> <span class="hw" data-delay="400">para</span> <span class="hw" data-delay="520">brasileiros</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreendem</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
       <div class="fu" data-d="2" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px">
@@ -572,10 +592,6 @@ p{text-wrap:pretty}
       <div class="port-scroll-track">
 
         <!-- Set 1 — originais -->
-        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://phibsborough-motors.preview.emergentagent.com/')">
-          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="Bissoli Motors" loading="lazy" style="object-position:left top"/>
-          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
-        </a>
         <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://bigback-gx9kj62.public.builtwithrocket.new/home')">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="BigBack Fitness" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
@@ -594,10 +610,6 @@ p{text-wrap:pretty}
         </a>
 
         <!-- Set 2 — duplicado para loop contínuo -->
-        <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://phibsborough-motors.preview.emergentagent.com/')" aria-hidden="true" tabindex="-1">
-          <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fphibsborough-motors.preview.emergentagent.com%2F?w=1280&h=800" alt="" loading="lazy" style="object-position:left top"/>
-          <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Conversão</span><div class="port-item-title-s">Bissoli Motors</div><div class="port-item-sub-s">Oficina Mecânica · Dublin</div></div>
-        </a>
         <a class="port-item" href="javascript:void(0)" onclick="openPortModal('https://bigback-gx9kj62.public.builtwithrocket.new/home')" aria-hidden="true" tabindex="-1">
           <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbigback-gx9kj62.public.builtwithrocket.new%2Fhome?w=1280&h=800" alt="" loading="lazy" style="object-position:15% top"/>
           <div class="port-item-info"><span class="port-item-badge-s">Landing Page + Produto Digital</span><div class="port-item-title-s">BigBack Fitness</div><div class="port-item-sub-s">Personal Trainer · Dublin</div></div>
