@@ -47,7 +47,7 @@ body{background:#FFFFFF;color:#0A0A0A;font-family:'Inter',sans-serif;overflow-x:
 
 /* Marquee */
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.mq-t{animation:mq 24s linear infinite;display:flex;white-space:nowrap}
+.mq-t{animation:mq 12s linear infinite;display:flex;white-space:nowrap}
 
 /* ═══════════════════════════════
    INTERACTIVE SERVICE SELECTOR
@@ -220,6 +220,12 @@ p{text-wrap:pretty}
 
   /* Causa image: bigger impact on mobile */
   .causa-img { width: 92% !important; }
+
+  /* Photo sections (quem somos + como funciona): full width, less padding */
+  #problemas { padding: 20px 8px !important; }
+  #problemas img { max-width: 100% !important; border-radius: 14px !important; }
+  #processo { padding: 20px 8px !important; }
+  #processo img { max-width: 100% !important; border-radius: 14px !important; }
 
   /* ── Hero background — mobile fix ──────────────────────────────
      Com cover + viewport portrait, o browser escala pela altura
@@ -1304,14 +1310,21 @@ document.addEventListener('keydown',function(e){
 });
 
 // ── Portfolio iframe modal ──────────────────────────────────
+var _portSY=0;
 function openPortModal(url){
+  _portSY=window.scrollY||window.pageYOffset;
   var modal=document.getElementById('port-modal');
   var iframe=document.getElementById('port-modal-iframe');
   var loader=document.getElementById('port-modal-loader');
   iframe.src='';
   loader.style.display='flex';
   iframe.style.opacity='0';
-  modal.classList.add('port-modal-open');
+  modal.classList.add('port-open');
+  // iOS-safe scroll lock
+  document.body.style.position='fixed';
+  document.body.style.top='-'+_portSY+'px';
+  document.body.style.left='0';
+  document.body.style.right='0';
   document.body.style.overflow='hidden';
   iframe.onload=function(){
     loader.style.display='none';
@@ -1321,75 +1334,60 @@ function openPortModal(url){
 }
 function closePortModal(){
   var modal=document.getElementById('port-modal');
-  if(!modal) return;
-  modal.classList.remove('port-modal-open');
+  if(!modal||!modal.classList.contains('port-open')) return;
+  modal.classList.remove('port-open');
+  // Restore scroll
+  document.body.style.position='';
+  document.body.style.top='';
+  document.body.style.left='';
+  document.body.style.right='';
   document.body.style.overflow='';
+  window.scrollTo(0,_portSY);
   setTimeout(function(){
-    document.getElementById('port-modal-iframe').src='';
-  },350);
+    var f=document.getElementById('port-modal-iframe');
+    if(f) f.src='';
+  },320);
 }
 </script>
 
-<!-- ── Portfolio iframe modal overlay ───────────────────────── -->
-<div id="port-modal" onclick="if(event.target===this)closePortModal()" style="
-  position:fixed;inset:0;z-index:9999;
-  background:rgba(0,0,0,0.82);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transition:opacity 0.3s ease;
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
+<!-- ── Portfolio iframe modal ──────────────────────────────────── -->
+<div id="port-modal" class="port-overlay" role="dialog" aria-modal="true" onclick="if(event.target===this)closePortModal()">
+  <div class="port-inner">
 
-  <div style="
-    position:relative;width:min(96vw,1280px);height:min(90vh,820px);
-    background:#0a0a0a;border-radius:16px;overflow:hidden;
-    box-shadow:0 32px 80px rgba(0,0,0,0.7);
-    transform:scale(0.94);transition:transform 0.3s ease">
-
-    <!-- barra superior -->
-    <div style="
-      position:absolute;top:0;left:0;right:0;height:48px;
-      background:#1a1a1a;display:flex;align-items:center;
-      justify-content:space-between;padding:0 16px;z-index:10;
-      border-bottom:1px solid rgba(255,255,255,0.08)">
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
-        <div style="width:12px;height:12px;border-radius:50%;background:#febc2e"></div>
-        <div style="width:12px;height:12px;border-radius:50%;background:#28c840"></div>
+    <!-- barra superior estilo browser -->
+    <div style="background:#1a1a1a;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div style="display:flex;align-items:center;gap:7px">
+        <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;display:block"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;display:block"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#28c840;display:block"></span>
       </div>
-      <span style="color:rgba(255,255,255,0.4);font-size:12px;font-family:monospace">preview</span>
-      <button onclick="closePortModal()" style="
-        background:none;border:none;cursor:pointer;
-        color:rgba(255,255,255,0.55);font-size:22px;line-height:1;
-        padding:4px 6px;border-radius:6px;transition:color 0.2s,background 0.2s"
-        onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.1)'"
-        onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.background='none'"
-        aria-label="Fechar">&#x2715;</button>
+      <span style="color:rgba(255,255,255,0.28);font-size:11px;font-family:monospace;letter-spacing:.04em">preview</span>
+      <button onclick="closePortModal()" aria-label="Fechar" style="width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.18);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms,border-color 200ms;flex-shrink:0" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.background='none';this.style.borderColor='rgba(255,255,255,0.18)'">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#aaa" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
     </div>
 
-    <!-- loader -->
-    <div id="port-modal-loader" style="
-      position:absolute;inset:48px 0 0 0;display:flex;
-      flex-direction:column;align-items:center;justify-content:center;
-      background:#0a0a0a;gap:16px;z-index:5">
-      <div style="
-        width:36px;height:36px;border:3px solid rgba(0,154,68,0.25);
-        border-top-color:#009A44;border-radius:50%;
-        animation:port-spin 0.8s linear infinite"></div>
-      <span style="color:rgba(255,255,255,0.4);font-size:13px">Carregando...</span>
+    <!-- loader (absoluto, cobre o iframe enquanto carrega) -->
+    <div id="port-modal-loader" style="position:absolute;inset:46px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#111;gap:14px;z-index:5;border-radius:0 0 18px 18px;pointer-events:none">
+      <div style="width:34px;height:34px;border:3px solid rgba(0,154,68,0.2);border-top-color:#009A44;border-radius:50%;animation:port-spin 0.8s linear infinite"></div>
+      <span style="color:rgba(255,255,255,0.35);font-size:12.5px">Carregando...</span>
     </div>
 
-    <!-- iframe -->
-    <iframe id="port-modal-iframe" src="" style="
-      position:absolute;inset:48px 0 0 0;
-      width:100%;height:calc(100% - 48px);
-      border:none;transition:opacity 0.3s ease"
-      allowfullscreen loading="lazy"></iframe>
+    <!-- iframe wrapper com scroll nativo iOS -->
+    <div style="flex:1;position:relative;overflow:hidden;-webkit-overflow-scrolling:touch">
+      <iframe id="port-modal-iframe" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block;transition:opacity 280ms ease" allowfullscreen></iframe>
+    </div>
+
   </div>
 </div>
 
 <style>
-#port-modal.port-modal-open{opacity:1;pointer-events:all}
-#port-modal.port-modal-open>div{transform:scale(1)}
+/* Portfolio iframe modal */
+.port-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:10px;opacity:0;pointer-events:none;transition:opacity 280ms ease;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.port-overlay.port-open{opacity:1;pointer-events:auto}
+.port-inner{background:#111;border-radius:18px;width:100%;max-width:1100px;height:min(88vh,840px);display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,0.65);overflow:hidden;transform:translateY(22px);transition:transform 320ms ease;position:relative;flex-shrink:0}
+.port-overlay.port-open .port-inner{transform:translateY(0)}
+@media(max-width:639px){.port-overlay{padding:6px}.port-inner{height:calc(100dvh - 12px);border-radius:14px}}
 @keyframes port-spin{to{transform:rotate(360deg)}}
 </style>
 
