@@ -197,11 +197,11 @@ p{text-wrap:pretty}
   /* Causa image: bigger impact on mobile */
   .causa-img { width: 92% !important; }
 
-  /* Photo sections (quem somos + como funciona): edge-to-edge on mobile */
-  #problemas { padding: 0 !important; }
-  #problemas img { max-width: 100% !important; width: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
-  #processo { padding: 0 !important; }
-  #processo img { max-width: 100% !important; width: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
+  /* Photo sections (quem somos + como funciona): edge-to-edge + zoom on mobile */
+  #problemas { padding: 0 !important; overflow: hidden !important; }
+  #problemas img { max-width: none !important; width: 112% !important; margin-left: -6% !important; border-radius: 0 !important; box-shadow: none !important; }
+  #processo { padding: 0 !important; overflow: hidden !important; }
+  #processo img { max-width: none !important; width: 112% !important; margin-left: -6% !important; border-radius: 0 !important; box-shadow: none !important; }
 
   /* ── Hero background — mobile fix ──────────────────────────────
      Com cover + viewport portrait, o browser escala pela altura
