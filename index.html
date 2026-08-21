@@ -15,6 +15,10 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Vibe Digital — Marketing Digital para Brasileiros na Irlanda"/>
 <meta name="twitter:description" content="A agência que entende o brasileiro que empreende na Irlanda."/>
+<meta property="og:image" content="https://vibedigital.storxperience.com/imagens/vibedigitalnotebook.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:image" content="https://vibedigital.storxperience.com/imagens/vibedigitalnotebook.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet"/>
@@ -1272,6 +1276,24 @@ function closePortModal(){
 @media(max-width:639px){.port-overlay{padding:6px}.port-inner{height:calc(100dvh - 12px);border-radius:14px}}
 @keyframes port-spin{to{transform:rotate(360deg)}}
 </style>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0A0A0A;border-top:1px solid #222;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+  <p style="color:#ccc;font-size:13px;margin:0;line-height:1.5;flex:1;min-width:200px">Usamos cookies essenciais para o funcionamento do site. <button onclick="document.getElementById('modalPrivacidade').style.display='flex'" style="background:none;border:none;color:#009A44;cursor:pointer;font-size:13px;padding:0;text-decoration:underline;font-family:inherit">Política de Privacidade</button></p>
+  <button id="cookie-ok" style="background:#009A44;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">Entendido</button>
+</div>
+<script>
+(function(){
+  if(!localStorage.getItem('vd_cookies_ok')){
+    var bar=document.getElementById('cookie-bar');
+    bar.style.display='flex';
+    document.getElementById('cookie-ok').addEventListener('click',function(){
+      localStorage.setItem('vd_cookies_ok','1');
+      bar.style.display='none';
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
