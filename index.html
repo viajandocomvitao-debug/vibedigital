@@ -19,6 +19,8 @@
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:image" content="https://vibedigital.storxperience.com/imagens/vibedigitalnotebook.png"/>
+<link rel="preload" as="image" href="imagens/hero-mobile.png" media="(max-width:768px)"/>
+<link rel="preload" as="image" href="imagens/hero-bg.png" media="(min-width:769px)"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet"/>
@@ -367,7 +369,7 @@ p{text-wrap:pretty}
       <h1 style="font-size:clamp(28px,5.5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:28px;color:#FFFFFF"><span class="hw" data-delay="0">A</span> <span class="hw" data-delay="100">agência</span> <span class="hw" data-delay="200">que</span> <span class="hw" data-delay="300">entende</span> <span class="hw" data-delay="400">o</span> <span class="hw" data-delay="520">brasileiro</span><br class="hide-mobile"><span class="hw" data-delay="640">que</span> <span class="hw" data-delay="740">empreende</span> <span class="hw" data-delay="860">na</span> <span class="hw" data-delay="960">Irlanda.</span></h1>
       <!-- Imagem dos países — visível apenas no mobile (via CSS) -->
       <div class="hero-map-wrap" style="display:none;position:relative;z-index:2">
-        <img src="imagens/hero-mobile.png" alt="Brasil e Irlanda" class="hero-mobile-img" loading="eager"/>
+        <img src="imagens/hero-mobile.png" alt="Brasil e Irlanda" class="hero-mobile-img" loading="eager" fetchpriority="high"/>
       </div>
       <div class="fu" data-d="2" style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px">
         <div style="display:flex">
@@ -1237,7 +1239,7 @@ function closePortModal(){
 </script>
 
 <!-- ── Portfolio iframe modal ──────────────────────────────────── -->
-<div id="port-modal" class="port-overlay" role="dialog" aria-modal="true" onclick="if(event.target===this)closePortModal()">
+<div id="port-modal" class="port-overlay" role="dialog" aria-modal="true" aria-label="Visualização do portfólio" onclick="if(event.target===this)closePortModal()">
   <div class="port-inner">
 
     <!-- barra superior estilo browser -->
@@ -1261,7 +1263,7 @@ function closePortModal(){
 
     <!-- iframe wrapper com scroll nativo iOS -->
     <div style="flex:1;position:relative;overflow:hidden;-webkit-overflow-scrolling:touch">
-      <iframe id="port-modal-iframe" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block;transition:opacity 280ms ease" allowfullscreen></iframe>
+      <iframe id="port-modal-iframe" src="" title="Visualização do site do portfólio" style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block;transition:opacity 280ms ease" allowfullscreen></iframe>
     </div>
 
   </div>
